@@ -1,0 +1,69 @@
+Day 1
+
+Why We use React : Application is fast, single page Application, (Having only one html page to build complete Application).
+                    Ex : Instagram, FaceBook, GitHub
+
+
+This is the process of passing the value between the JS File
+let phone = "IPhone";
+ export default phone;
+
+import phone from "./India.js"
+console.log(phone);
+
+
+
+Scenario 1  : 
+we must write the same name of resourse in export.
+let phone = () =>{
+    console.log("IPhone");
+}
+export default phone;
+
+
+we can write the any name / Rename of resourse in import.
+import Lava from "./India.js"
+Lava();
+
+
+
+
+Scenario 2  : 
+We can pass the function , array, value, and anything 
+
+we can not pass multiple value by : export default phone , Laptop;  
+So we need to array or object to pass multiple export
+2.1 Passing value by Array
+
+let phone = () =>{
+    console.log("IPhone");
+}
+let Laptop = "AsusX515"
+export default [phone, Laptop];
+
+
+import Resourse from "./India.js"
+let [phone, Laptop] = Resourse;
+console.log(Laptop);
+phone();
+
+
+2.2 Passing value By Object
+
+let resourse1 = "Weapons"
+let resourse2 = "Cruid Oil"
+
+let obj = {
+    resourse1,
+    resourse2,
+    func : ()=>{
+        console.log("Function");        
+    }
+}
+export default obj;
+
+
+import India_Resourse from "./India.js"
+let {resourse1, resourse2, func} = India_Resourse
+console.log(resourse2);
+func();                                                             
