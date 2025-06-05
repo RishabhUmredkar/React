@@ -1,4 +1,8 @@
+demoapps.qspiders.com.
+
 Day 1
+
+React is Liberary of JavaScript.
 
 Why We use React : Application is fast, single page Application, (Having only one html page to build complete Application).
                     Ex : Instagram, FaceBook, GitHub
@@ -67,3 +71,44 @@ import India_Resourse from "./India.js"
 let {resourse1, resourse2, func} = India_Resourse
 console.log(resourse2);
 func();                                                             
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------
+
+Day 3
+
+Q1. what is the advantages andd DisAdvantages of React.
+advantages : 1. Application become very faster and smooth
+             2. Reduce the line of code to achieve code redundancy.
+             3. Faster development 
+             4. Easy to maintain
+             5. Application become lightweight.
+
+DisAdvantages : 1. We cannot achieve 100% SEO using SAP -> because it has only one html fie which can load the meta only once
+                2. Application become costly because we need trained developers.
+
+
+
+Q2. Difference between Single Page Application  and multiple page Application.
+
+
+
+History : 
+1. Angular FrameWork Found by Google in 2009. It is based on MVC architecture. It is Supporting JavaScript and TypeScript.
+
+2. React Liberary Found by FaceBook in 2011. It is based on Component base architecture. It is Supporting JavaScript and TypeScript. 
+    2011 -> Instagram
+    2012 -> FaceBook
+    2013 -> Launched
+
+3. Vue FrameWork Found by Evan you in 2014. it is based on Component based architecture. It is Supporting TypeScript and JavaScript.
+
+4. Angular2 FrameWork Found by Google in 2016. it is based on Component based architecture. It is Supporting only TypeScript.
+
+
+
+
+Q3. what is diffing Algorithm : It is the process of finding the Difference between Real DOM And Virtual DOM.
+Q4. What is Reconciliation  : Implementing the changes in Real DOM, that found during the Diffing Algorithm Virtual DOM.
+Q5. What is react fiber :  React fiber is the react engine that handle all the internal working with the react like diffing Algorithm, Reconciliation and lot many things
