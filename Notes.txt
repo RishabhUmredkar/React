@@ -112,3 +112,97 @@ History :
 Q3. what is diffing Algorithm : It is the process of finding the Difference between Real DOM And Virtual DOM.
 Q4. What is Reconciliation  : Implementing the changes in Real DOM, that found during the Diffing Algorithm Virtual DOM.
 Q5. What is react fiber :  React fiber is the react engine that handle all the internal working with the react like diffing Algorithm, Reconciliation and lot many things
+
+
+
+
+
+
+
+
+
+
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------
+
+Day 7
+
+Component : Component is the reuseable block of code which is used to perform specific task.
+            A Component represents single function or a class.
+            A Component name should always start with UpperCase character.
+            We can return jsx from an Component and that jsx is return to the caller.
+            We can have multiple Components inside single module. But it is recommended to have only one.
+            Component are divided into two types : 1. Function based Components.  2.Class based Component.
+
+Q. Difference between Function based Component and class based Component
+
+
+
+import { Component } from "react";
+import Navbar from "./Component/Navbar";
+import Aside from "./Component/Aside";
+import MainBody from "./Component/MainBody";
+import Footer from "./Component/Footer";
+import Count from "./Day7/Count";
+
+
+
+// class App extends Component{
+//   constructor()
+//   {
+//     super();
+//   }
+//   render(){
+//     return(
+//       <div>
+//         <Navbar/>
+//         <div id ="mainBody">
+//           <Aside/>
+//           <MainBody/>
+//           </div>
+//         <Footer />  
+//       </div>
+//   )
+//   }
+// }
+
+
+
+class Day7 extends Component{
+  constructor(){
+    super();
+    
+  }
+  render(){
+    return(
+     <Count/>
+    )
+  }
+}
+
+export default Day7;
+import { Component } from "react";
+
+class Count extends Component{
+     constructor(){
+    super();
+    this.state = {
+      cartItem : 0
+    };
+  }
+
+  render(){
+    return(
+      <div>
+      <h1>{this.state.cartItem}</h1>
+      <button onClick={()=>{
+        this.setState({cartItem : this.state.cartItem +=1})
+      }}>Like</button>
+      </div>
+    )
+  }
+}
+
+export default Count;

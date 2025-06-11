@@ -1,0 +1,43 @@
+import { Component } from "react";
+import Navbar from "./Component/Navbar";
+import Aside from "./Component/Aside";
+import MainBody from "./Component/MainBody";
+import Footer from "./Component/Footer";
+import Count from "./Day7/Count";
+
+
+
+// class App extends Component{
+//   constructor()
+//   {
+//     super();
+//   }
+//   render(){
+//     return(
+//       <div>
+//         <Navbar/>
+//         <div id ="mainBody">
+//           <Aside/>
+//           <MainBody/>
+//           </div>
+//         <Footer />  
+//       </div>
+//   )
+//   }
+// }
+
+
+
+class Day7 extends Component{
+  constructor(){
+    super();
+    
+  }
+  render(){
+    return(
+     <Count/>
+    )
+  }
+}
+
+export default Day7;

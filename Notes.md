@@ -19,13 +19,25 @@
 
 ### Day 3: React Concepts & Q&A
 5. [React Concepts & Q&A](#-day-3-react-concepts--qa)
-    5.1. [Q1. Advantages and Disadvantages of React](#-q1-what-are-the-advantages-and-disadvantages-of-react)
-    5.2. [Q2. SPA vs MPA](#-q2-difference-between-single-page-application-spa-and-multiple-page-application-mpa)
-    5.3. [History of Popular Frontend Frameworks](#-history-of-popular-frontend-frameworks)
-    5.4. [Q3. What is the Diffing Algorithm?](#-q3-what-is-the-diffing-algorithm)
-    5.5. [Q4. What is Reconciliation?](#-q4-what-is-reconciliation)
-    5.6. [Q5. What is React Fiber?](#-q5-what-is-react-fiber)
+    5.1. [Q1. Advantages and Disadvantages of React](#-q1-what-are-the-advantages-and-disadvantages-of-react)  
+    5.2. [Q2. SPA vs MPA](#-q2-difference-between-single-page-application-spa-and-multiple-page-application-mpa)  
+    5.3. [History of Popular Frontend Frameworks](#-history-of-popular-frontend-frameworks)  
+    5.4. [Q3. What is the Diffing Algorithm?](#-q3-what-is-the-diffing-algorithm)  
+    5.5. [Q4. What is Reconciliation?](#-q4-what-is-reconciliation)  
+    5.6. [Q5. What is React Fiber?](#-q5-what-is-react-fiber)  
+    5.6. [Q5. What is React Fiber2](#-q5-real-is-react-fiber2)  
     5.7. [Real DOM Diagram](#-real-dom-diagram)
+5.7. [Real DOM Diagram](#-real-dom-diagram)
+
+### Day 7: React Components & State
+6. [React Components & State](#-day-7-react-components--state)
+    6.1. [What is a Component?](#-what-is-a-component)
+    6.2. [Types of Components](#-types-of-components)
+        - [Function-based Component](#1-function-based-component)
+        - [Class-based Component](#2-class-based-component)
+    6.3. [Q&A: Function vs Class Components](#-qa-function-vs-class-components)
+    6.4. [Example: Class-based Component with State](#-example-class-based-component-with-state)
+    6.5. [Interview Questions](#-interview-questions)
 
 
 ---
@@ -232,6 +244,8 @@ Implementing the changes in Real DOM, that found during the Diffing Algorithm Vi
 
 ### 🖼️ Real DOM Diagram
 
+Below is a diagram illustrating the structure of the Real DOM:
+
 ```mermaid
 graph TD
     A[HTML File] --> B[DOM Tree]
@@ -247,5 +261,130 @@ graph TD
 - The Real DOM is a tree-like structure representing the HTML elements of a page.
 - Each HTML tag becomes a node in the DOM tree.
 - React interacts with the Real DOM by updating only the parts that change, thanks to the Virtual DOM and reconciliation process.
+
+---
+
+
+
+
+## 📅 Day 7: React Components & State
+
+### 🧩 What is a Component?
+
+A **Component** in React is a reusable block of code that represents a part of the UI. Components help you break down complex interfaces into smaller, manageable pieces.
+
+- **Definition:** A component is a function or class that returns JSX (UI code).
+- **Naming:** Component names should start with an uppercase letter.
+- **Reusability:** Components can be reused across your app.
+- **Types:**  
+    1. **Function-based Components**  
+    2. **Class-based Components**
+
+> **Tip:** It's recommended to have one main component per file, but you can define multiple if needed.
+
+---
+
+### 🏗️ Types of Components
+
+#### 1. Function-based Component
+
+- Defined as a JavaScript function.
+- Returns JSX directly.
+- Uses React Hooks (like `useState`) for state and side effects.
+- Simpler and preferred for most use cases.
+
+**Example:**
+```jsx
+function Welcome(props) {
+    return <h1>Hello, {props.name}!</h1>;
+}
+```
+
+#### 2. Class-based Component
+
+- Defined as a JavaScript class extending `React.Component`.
+- Has a `render()` method that returns JSX.
+- Uses `this.state` for state management and lifecycle methods.
+
+**Example:**
+```jsx
+import { Component } from "react";
+
+class Welcome extends Component {
+    render() {
+        return <h1>Hello, {this.props.name}!</h1>;
+    }
+}
+```
+
+---
+
+### ❓ Q&A: Function vs Class Components
+
+| Feature                | Function-based Component         | Class-based Component           |
+|------------------------|----------------------------------|---------------------------------|
+| Syntax                 | Function                         | Class extends `Component`       |
+| State                  | `useState` Hook                  | `this.state`                    |
+| Lifecycle Methods      | Hooks (`useEffect`, etc.)        | Built-in lifecycle methods      |
+| Simplicity             | More concise                     | More boilerplate                |
+| Recommended            | Yes (modern React)               | Legacy (still supported)        |
+
+---
+
+### 🛠️ Example: Class-based Component with State
+
+Below is a simple counter component using a class:
+
+```jsx
+import { Component } from "react";
+
+class Count extends Component {
+    constructor() {
+        super();
+        this.state = {
+            cartItem: 0
+        };
+    }
+
+    render() {
+        return (
+            <div>
+                <h1>{this.state.cartItem}</h1>
+                <button onClick={() => {
+                    this.setState({ cartItem: this.state.cartItem + 1 });
+                }}>Like</button>
+            </div>
+        );
+    }
+}
+
+export default Count;
+```
+
+**Explanation:**
+- `this.state` holds the component's data (`cartItem`).
+- `setState` updates the state and re-renders the component.
+- Clicking the button increases the count.
+
+---
+
+### ❓ Interview Questions
+
+**Q1. What is a React Component?**  
+A reusable, independent block of code that returns JSX and represents a part of the UI.
+
+**Q2. Difference between Function-based and Class-based Components?**  
+Function-based components are simpler, use hooks for state and effects, and are recommended in modern React. Class-based components use `this.state` and lifecycle methods.
+
+**Q3. How do you manage state in a class component?**  
+By initializing `this.state` in the constructor and updating it using `this.setState()`.
+
+**Q4. Why should component names start with uppercase?**  
+React treats lowercase tags as HTML elements. Uppercase tells React it's a custom component.
+
+---
+
+> **Summary:**  
+> Components are the building blocks of React apps. Prefer function-based components for new code, but understand class-based components for legacy projects and interviews.
 
 ---
