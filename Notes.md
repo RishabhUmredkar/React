@@ -4,30 +4,27 @@
 ---
 ## 📑 Index
 
+### Day 1: Getting Started with React  
+1. [Getting Started with React](#-day-1-getting-started-with-react)  
+    1.1. [Why Use React?](#-why-use-react)  
+2. [JavaScript Modules: Export & Import](#-javascript-modules-export--import)  
+    2.1. [Basic Export & Import](#-basic-export--import)  
+    2.2. [Scenario 1: Exporting & Importing Functions](#-scenario-1-exporting--importing-functions)  
+    2.3. [Scenario 2: Exporting Multiple Values](#-scenario-2-exporting-multiple-values)  
+        2.3.1. [Exporting Multiple Values as an Array](#-21-exporting-multiple-values-as-an-array)  
+        2.3.2. [Exporting Multiple Values as an Object](#-22-exporting-multiple-values-as-an-object)  
+3. [Summary](#-summary)  
+4. [Interview Tip](#-interview-tip)  
 
-### Day 1: Getting Started with React
-1. [Getting Started with React](#-day-1-getting-started-with-react)
-    1.1. [Why Use React?](#-why-use-react)
-2. [JavaScript Modules: Export & Import](#-javascript-modules-export--import)
-    2.1. [Basic Export & Import](#-basic-export--import)
-    2.2. [Scenario 1: Exporting & Importing Functions](#-scenario-1-exporting--importing-functions)
-    2.3. [Scenario 2: Exporting Multiple Values](#-scenario-2-exporting-multiple-values)
-   - [2.3.1. Exporting Multiple Values as an Array](#-21-exporting-multiple-values-as-an-array)
-   - [2.3.2. Exporting Multiple Values as an Object](#-22-exporting-multiple-values-as-an-object)
-3. [Summary](#-summary)
-4. [Interview Tip](#-interview-tip)
-
-### Day 3: React Concepts & Q&A
-5. [React Concepts & Q&A](#-day-3-react-concepts--qa)
-    5.1. [Q1. Advantages and Disadvantages of React](#-q1-what-are-the-advantages-and-disadvantages-of-react)  
-    5.2. [Q2. SPA vs MPA](#-q2-difference-between-single-page-application-spa-and-multiple-page-application-mpa)  
-    5.3. [History of Popular Frontend Frameworks](#-history-of-popular-frontend-frameworks)  
-    5.4. [Q3. What is the Diffing Algorithm?](#-q3-what-is-the-diffing-algorithm)  
-    5.5. [Q4. What is Reconciliation?](#-q4-what-is-reconciliation)  
-    5.6. [Q5. What is React Fiber?](#-q5-what-is-react-fiber)  
-    5.6. [Q5. What is React Fiber2](#-q5-real-is-react-fiber2)  
-    5.7. [Real DOM Diagram](#-real-dom-diagram)
-5.7. [Real DOM Diagram](#-real-dom-diagram)
+### Day 3: React Concepts & Q&A  
+5. [React Concepts & Q&A](#-day-3-react-concepts--qa)  
+&emsp;5.1. [Q1. Advantages and Disadvantages of React](#-q1-what-are-the-advantages-and-disadvantages-of-react)  
+&emsp;5.2. [Q2. SPA vs MPA](#-q2-difference-between-single-page-application-spa-and-multiple-page-application-mpa)  
+&emsp;5.3. [History of Popular Frontend Frameworks](#-history-of-popular-frontend-frameworks)  
+&emsp;5.4. [Q3. What is the Diffing Algorithm?](#-q3-what-is-the-diffing-algorithm)  
+&emsp;5.5. [Q4. What is Reconciliation?](#-q4-what-is-reconciliation)  
+&emsp;5.6. [Q5. What is React Fiber?](#-q5-what-is-react-fiber)  
+&emsp;5.7. [Real DOM Diagram](#-real-dom-diagram)  
 
 ### Day 7: React Components & State  
 6. [React Components & State](#-day-7-react-components--state)  
