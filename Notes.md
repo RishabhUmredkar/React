@@ -29,15 +29,15 @@
     5.7. [Real DOM Diagram](#-real-dom-diagram)
 5.7. [Real DOM Diagram](#-real-dom-diagram)
 
-### Day 7: React Components & State
-6. [React Components & State](#-day-7-react-components--state)
-    6.1. [What is a Component?](#-what-is-a-component)
-    6.2. [Types of Components](#-types-of-components)
-        - [Function-based Component](#1-function-based-component)
-        - [Class-based Component](#2-class-based-component)
-    6.3. [Q&A: Function vs Class Components](#-qa-function-vs-class-components)
-    6.4. [Example: Class-based Component with State](#-example-class-based-component-with-state)
-    6.5. [Interview Questions](#-interview-questions)
+### Day 7: React Components & State  
+6. [React Components & State](#-day-7-react-components--state)  
+6.1. [What is a Component?](#-what-is-a-component)  
+6.2. [Types of Components](#-types-of-components)  
+&emsp;• [Function-based Component](#1-function-based-component)  
+&emsp;• [Class-based Component](#2-class-based-component)  
+6.3. [Q&A: Function vs Class Components](#-qa-function-vs-class-components)  
+6.4. [Example: Class-based Component with State](#-example-class-based-component-with-state)  
+6.5. [Interview Questions](#-interview-questions)  
 
 
 ---

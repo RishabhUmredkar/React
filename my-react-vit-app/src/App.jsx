@@ -25,6 +25,7 @@ import Count from "./Day7/Count";
 //   )
 //   }
 // }
+// export default App;
 
 
 
@@ -40,4 +41,18 @@ class Day7 extends Component{
   }
 }
 
-export default Day7;
+// export default Day7;
+
+class Day8 extends Component{
+  constructor(){
+    super();
+    
+  }
+  render(){
+    return(
+     <Count/>
+    )
+  }
+}
+
+export default Day8;
