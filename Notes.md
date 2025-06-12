@@ -2,6 +2,7 @@
 **By Rishabh Umredkar**
 
 ---
+
 ## 📑 Index
 
 ### Day 1: Getting Started with React  
@@ -11,7 +12,6 @@
     2.1. [Basic Export & Import](#-basic-export--import)  
     2.2. [Scenario 1: Exporting & Importing Functions](#-scenario-1-exporting--importing-functions)  
     2.3. [Scenario 2: Exporting Multiple Values](#-scenario-2-exporting-multiple-values)  
-        2.3.1. [Exporting Multiple Values as an Array](#-21-exporting-multiple-values-as-an-array)  
         2.3.2. [Exporting Multiple Values as an Object](#-22-exporting-multiple-values-as-an-object)  
 3. [Summary](#-summary)  
 4. [Interview Tip](#-interview-tip)  
@@ -36,6 +36,14 @@
 6.4. [Example: Class-based Component with State](#-example-class-based-component-with-state)  
 6.5. [Interview Questions](#-interview-questions)  
 
+
+
+### Day 8: JSX Introduction  
+7. [JSX Introduction](#-day-8-jsx-introduction)  
+7.1. [What is JSX?](#-what-is-jsx)  
+7.2. [Typical File Structure](#-typical-file-structure)  
+7.3. [JSX Rules & Best Practices](#-jsx-rules--best-practices)  
+7.4. [Q&A](#-q--a)  
 
 ---
 
@@ -262,75 +270,55 @@ graph TD
 ---
 
 
-
-
 ## 📅 Day 7: React Components & State
 
 ### 🧩 What is a Component?
 
-A **Component** in React is a reusable block of code that represents a part of the UI. Components help you break down complex interfaces into smaller, manageable pieces.
-
-- **Definition:** A component is a function or class that returns JSX (UI code).
-- **Naming:** Component names should start with an uppercase letter.
-- **Reusability:** Components can be reused across your app.
-- **Types:**  
-    1. **Function-based Components**  
-    2. **Class-based Components**
-
-> **Tip:** It's recommended to have one main component per file, but you can define multiple if needed.
+A **Component** is a reusable block of code in React that performs a specific task and represents a part of the UI.  
+- Components can be functions or classes.
+- The name of a component should always start with an **uppercase** letter.
+- Components return JSX, which describes what should appear on the screen.
+- Multiple components can exist in a single module, but it's recommended to have one main component per file.
+- **Types of Components:**
+    1. **Function-based Components (FBC)**
+    2. **Class-based Components (CBC)**
 
 ---
 
-### 🏗️ Types of Components
+### 📦 What is a Module?
 
-#### 1. Function-based Component
-
-- Defined as a JavaScript function.
-- Returns JSX directly.
-- Uses React Hooks (like `useState`) for state and side effects.
-- Simpler and preferred for most use cases.
-
-**Example:**
-```jsx
-function Welcome(props) {
-    return <h1>Hello, {props.name}!</h1>;
-}
-```
-
-#### 2. Class-based Component
-
-- Defined as a JavaScript class extending `React.Component`.
-- Has a `render()` method that returns JSX.
-- Uses `this.state` for state management and lifecycle methods.
-
-**Example:**
-```jsx
-import { Component } from "react";
-
-class Welcome extends Component {
-    render() {
-        return <h1>Hello, {this.props.name}!</h1>;
-    }
-}
-```
+A **Module** is a single JS or JSX file in React.
+- A file becomes a module when it uses `type="module"` (in vanilla JS) or by using `import`/`export` in React.
+- Modules allow you to organize code and share components using `import` and `export`.
+- In React, modules typically have `.js` or `.jsx` extensions.
+- You can have multiple components in one module, but best practice is one main component per file.
 
 ---
 
-### ❓ Q&A: Function vs Class Components
+### 🔄 What is State?
 
-| Feature                | Function-based Component         | Class-based Component           |
-|------------------------|----------------------------------|---------------------------------|
-| Syntax                 | Function                         | Class extends `Component`       |
-| State                  | `useState` Hook                  | `this.state`                    |
-| Lifecycle Methods      | Hooks (`useEffect`, etc.)        | Built-in lifecycle methods      |
-| Simplicity             | More concise                     | More boilerplate                |
-| Recommended            | Yes (modern React)               | Legacy (still supported)        |
+**State** is a built-in object that stores property values that belong to a component.
+- State allows components to create and manage dynamic data.
+- Any update to the UI (like user input, clicks, etc.) should be handled through state.
+- In class-based components, state is managed using `this.state` and updated with `this.setState()`.
+- In function-based components, state is managed using **Hooks** like `useState`.
 
 ---
 
-### 🛠️ Example: Class-based Component with State
+### ❓ Q&A: Function-based vs Class-based Components
 
-Below is a simple counter component using a class:
+| Feature                        | Function-based Component (FBC)                                                                 | Class-based Component (CBC)                                      |
+|---------------------------------|----------------------------------------------------------------------------------------------|------------------------------------------------------------------|
+| Syntax                         | Uses `function` or arrow function                                                            | Uses `class` and extends `Component`                             |
+| Render Method                  | Returns JSX directly                                                                         | Must define a `render()` method                                  |
+| State Management               | Uses Hooks (`useState`, `useReducer`, etc.)                                                  | Uses `this.state` and `this.setState()`                          |
+| Lifecycle Methods              | Uses Hooks (`useEffect`) to mimic lifecycle methods                                          | Has built-in lifecycle methods (`componentDidMount`, etc.)        |
+| Hooks Support                  | Yes                                                                                          | No                                                               |
+| Code Maintenance               | Easier to maintain, less boilerplate                                                         | More boilerplate, harder to maintain                             |
+
+---
+
+#### Example: Class-based Component with State
 
 ```jsx
 import { Component } from "react";
@@ -349,7 +337,9 @@ class Count extends Component {
                 <h1>{this.state.cartItem}</h1>
                 <button onClick={() => {
                     this.setState({ cartItem: this.state.cartItem + 1 });
-                }}>Like</button>
+                }}>
+                    Like
+                </button>
             </div>
         );
     }
@@ -359,29 +349,170 @@ export default Count;
 ```
 
 **Explanation:**
-- `this.state` holds the component's data (`cartItem`).
-- `setState` updates the state and re-renders the component.
-- Clicking the button increases the count.
+- `Count` is a class-based component.
+- State is initialized in the constructor.
+- The `Like` button updates the `cartItem` state using `setState`, causing the component to re-render.
 
 ---
 
-### ❓ Interview Questions
+### ❓ Common Interview Questions
 
-**Q1. What is a React Component?**  
-A reusable, independent block of code that returns JSX and represents a part of the UI.
+**Q1. What is a component in React?**  
+A reusable block of code that returns JSX and represents a part of the UI.
 
-**Q2. Difference between Function-based and Class-based Components?**  
-Function-based components are simpler, use hooks for state and effects, and are recommended in modern React. Class-based components use `this.state` and lifecycle methods.
+**Q2. What is the difference between a module and a component?**  
+A module is a file (JS/JSX) that can contain one or more components. A component is a function or class that returns JSX.
 
-**Q3. How do you manage state in a class component?**  
-By initializing `this.state` in the constructor and updating it using `this.setState()`.
+**Q3. How do you manage state in class-based components?**  
+By initializing `this.state` in the constructor and updating it with `this.setState()`.
 
-**Q4. Why should component names start with uppercase?**  
-React treats lowercase tags as HTML elements. Uppercase tells React it's a custom component.
+**Q4. How do you manage state in function-based components?**  
+By using React Hooks like `useState` and `useReducer`.
+
+**Q5. What are lifecycle methods?**  
+Special methods in class-based components (like `componentDidMount`, `componentDidUpdate`, `componentWillUnmount`) that run at specific points in a component's life.
+
+**Q6. Why are function-based components preferred in modern React?**  
+They are simpler, easier to maintain, and support Hooks for state and lifecycle management.
 
 ---
 
 > **Summary:**  
-> Components are the building blocks of React apps. Prefer function-based components for new code, but understand class-based components for legacy projects and interviews.
+> Components are the building blocks of React apps. Use state to manage dynamic data, and prefer function-based components with Hooks for cleaner, more maintainable code.
+
+---
+
+
+
+
+## 📅 Day 8: JSX Introduction
+
+### 📝 What is JSX?
+
+**JSX (JavaScript XML)** is a syntax extension for JavaScript, used with React to describe what the UI should look like. It allows you to write HTML-like code inside JavaScript, making UI code more readable and expressive.
+
+---
+
+### 📁 Typical File Structure
+
+```
+JSXIntro/
+├── Task1.jsx
+├── JSXIntro.jsx
+├── App.jsx
+└── main.jsx
+```
+- **Task1.jsx**: Contains a specific task or component.
+- **JSXIntro.jsx**: Main file introducing JSX concepts.
+- **App.jsx**: Root component.
+- **main.jsx**: Entry point for rendering the app.
+
+---
+
+### 📜 JSX Rules & Best Practices
+
+1. **Single Root Element:**  
+    Each component must return only one JSX element. You can nest multiple elements inside a single parent.
+
+    ```jsx
+    // Correct
+    return (
+      <div>
+         <h1>Hello</h1>
+         <p>Welcome!</p>
+      </div>
+    );
+    ```
+
+2. **Element Naming:**
+    JSX element always writtern in lowercase (UpperCase consider as Component)  
+    - HTML elements: lowercase (`div`, `span`)
+    - React components: Uppercase (`MyComponent`)
+
+3. **Valid Nesting:** 
+    Do not place invalid elements inside others (e.g., `<div>` inside `<p>` is not allowed).
+
+4. **Self-Closing Tags:**  
+    All tags must be closed, even if they are self-closing.
+
+    ```jsx
+    <img src="logo.png" />
+    <input type="text" />
+    ```
+
+5. **Attribute Naming:**  
+    - `class` → `className`
+    - `for` → `htmlFor`
+
+6. **JSX Expressions:**  
+    Use `{}` to embed JavaScript expressions.
+ We can use jsx expression `{}` for writing JS code inside jsx.
+              1. we can write only ternary opertor as an conditional statement.
+              2. we can write only the HOF(Looping statement) that can return anything eg. map/filter/Reduce etc. 
+                    we can use forEach but it is not recommended because it cannot return anything.
+
+    - **Conditional Rendering:** Only ternary operators are allowed directly in JSX.
+      ```jsx
+      {isLoggedIn ? <p>Welcome!</p> : <p>Please log in.</p>}
+      ```
+    - **Looping:** Use array methods like `map`, `filter`, or `reduce` to render lists.
+      ```jsx
+      {items.map(item => <li key={item.id}>{item.name}</li>)}
+      ```
+      Avoid `forEach` as it does not return a value.
+
+7. **React Fragments:**  
+    Use `<React.Fragment>` or shorthand `<>...</>` to group elements without adding extra nodes to the DOM.
+
+    ```jsx
+    return (
+      <>
+         <h1>Title</h1>
+         <p>Description</p>
+      </>
+    );
+    ```
+
+    - Use empty fragments only if you don't need to set a `key` attribute.
+
+8. **Releated Rule no 1.** : We can use react fragment to avoid extra nodes in Dom Tree.
+              You can keep empty fragment only when key attribute is not required.
+
+    ```jsx
+    return (
+    //Day 8
+    <Fragment>
+         <div>
+            <JSXIntro/>
+         </div>
+    </Fragment>
+    
+    )
+    ```
+
+
+---
+
+### ❓ Q&A
+
+**Q1. What is JSX and why is it used in React?**  
+JSX is a syntax extension that lets you write HTML-like code in JavaScript. It makes UI code easier to read and write, and React transforms it into JavaScript calls.
+
+**Q2. Why must a component return a single root element?**  
+React needs a single root to efficiently manage and update the DOM tree.
+
+**Q3. How do you write JavaScript code inside JSX?**  
+Wrap JavaScript expressions in `{}`. For example: `{user.name}` or `{items.map(...)}`.
+
+**Q4. What are React Fragments and why use them?**  
+Fragments let you group multiple elements without adding extra nodes to the DOM, keeping the DOM tree clean.
+
+**Q5. What are some attribute name differences in JSX?**  
+Use `className` instead of `class`, and `htmlFor` instead of `for`.
+
+---
+
+> **Summary:**  
+> JSX makes React development intuitive by blending HTML and JavaScript. Follow the rules for valid JSX, use fragments to avoid unnecessary DOM nodes, and leverage expressions for dynamic content.
 
 ---

@@ -8,6 +8,6 @@ import Day8 from './App.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <Day8/>
+    <App/>
   </StrictMode>,
 )

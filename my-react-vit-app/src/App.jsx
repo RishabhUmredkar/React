@@ -4,6 +4,7 @@ import Aside from "./Component/Aside";
 import MainBody from "./Component/MainBody";
 import Footer from "./Component/Footer";
 import Count from "./Day7/Count";
+import JSXIntro from "./Day8/JSXIntro/JSXIntro";
 
 
 
@@ -29,30 +30,50 @@ import Count from "./Day7/Count";
 
 
 
-class Day7 extends Component{
-  constructor(){
-    super();
+// class Day7 extends Component{
+//   constructor(){
+//     super();
     
+//   }
+//   render(){
+//     return(
+//      <Count/>
+//     )
+//   }
+// }
+
+// // export default Day7;
+
+// class Day8 extends Component{
+//   constructor(){
+//     super();
+    
+//   }
+//   render(){
+//     return(
+//      <Count/>
+//     )
+//   }
+// }
+
+// export default Day8;
+
+
+
+
+class App extends Component{
+  constructor()
+  {
+    super();
   }
   render(){
     return(
-     <Count/>
-    )
+      //Day 8
+      <div>
+       <JSXIntro/>
+      </div>
+      
+  )
   }
 }
-
-// export default Day7;
-
-class Day8 extends Component{
-  constructor(){
-    super();
-    
-  }
-  render(){
-    return(
-     <Count/>
-    )
-  }
-}
-
-export default Day8;
+export default App;

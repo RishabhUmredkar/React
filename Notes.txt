@@ -136,7 +136,31 @@ Component : Component is the reuseable block of code which is used to perform sp
             We can have multiple Components inside single module. But it is recommended to have only one.
             Component are divided into two types : 1. Function based Components.  2.Class based Component.
 
+
+Module : Module is the single JSX file.
+         JS or JSX file will become a module only when we have mentioned type = "module"
+         We can achieve the import and export between the modules and only.
+         In React we create the module with .js and .jsx extension. In one module we can have multiple Component. 
+         
+State : any update operation you have to perform that only possible through state
+
 Q. Difference between Function based Component and class based Component
+
+Class base Component : 
+1. We use class for creating CBC
+2. The class extends Component and it has render method means each CBC must have render method.
+3. It has inbuild state Object and setState() method 
+4. We dont have any Hooks with CBC
+5. It has life-cycle method(ComponentDidMount, ComponentDidUpdate, ComponentWillUnmount)
+6. Difficult to Maintain.
+
+Function based Component :
+1. We use function for creating FBC.
+2. FBC doesnot extends any Component and no need to write render method wich Component. We will use render method main.jsx file only 
+3. It doesnot having inbuild state and setState() method. To manage the state we have to take the help of state management reDux/ toolKit or Hooks like useState, useReducers
+4. We have Hooks with FBC (useState, useReducers, useCallBack, useParam)
+5. It not have any inbuild life-cycle method but we can achieve them using UseEffectHook
+6. Easy to Maintain.
 
 
 
@@ -206,3 +230,41 @@ class Count extends Component{
 }
 
 export default Count;
+
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------
+
+Day 8
+
+JSX Intro
+
+file structure >> JSXIntro >  Task1.jsx -> JSXIntro.jsx -> App.jsx -> main.jsx
+
+JSX (JavaScript XML)
+Rules : 1. You can return only one jsx element at a time which can have n no of nested element.
+        2. JSX element always writtern in lowercase (UpperCase consider as Component)
+        3. You dont have to pass wrong descendents to any element. eg.  div is not allowed inside p tag.
+        4. All jsx element must be closed even it is paired or unpaired tag.
+        5. We have some alternative names for some attributes like 
+              1. class => className
+              2. for => htmlFor
+        6. We can use jsx expression `{}` for writing JS code inside jsx.
+              1. we can write only ternary opertor as an conditional statement.
+              2. we can write only the HOF(Looping statement) that can return anything eg. map/filter/Reduce etc. 
+                    we can use forEach but it is not recommended because it cannot return anything.
+        7. We can use react fragment to avoid extra nodes in jsx.
+
+        8. Releated Rule no 1. : We can use react fragment to avoid extra nodes in Dom Tree.
+              You can keep empty fragment only when key attribute is not required.
+              EX :  return(
+                //Day 8
+                <Fragment>
+                  <div>
+                    <JSXIntro/>
+                  </div>
+                </Fragment>
+                )
+
+          
