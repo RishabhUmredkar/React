@@ -268,3 +268,16 @@ Rules : 1. You can return only one jsx element at a time which can have n no of 
                 )
 
           
+
+
+
+
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------
+
+Day 9
+
+State
+Hooks : It is just inbuild function which come with react.

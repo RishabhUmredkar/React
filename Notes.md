@@ -45,6 +45,22 @@
 7.3. [JSX Rules & Best Practices](#-jsx-rules--best-practices)  
 7.4. [Q&A](#-q--a)  
 
+
+
+
+### Day 9: State & useState Hook  
+8. [State & useState Hook in React](#-day-9-state--usestate-hook-in-react)  
+    8.1. [What is State in React?](#-what-is-state-in-react)  
+    8.2. [What are Hooks?](#-what-are-hooks)  
+    8.3. [useState Hook: Introduction](#-usestate-hook-introduction)  
+    8.4. [Example: Basic useState Usage](#-example-basic-usestate-usage)  
+    8.5. [Common Mistake: Not Using useState](#-common-mistake-not-using-usestate)  
+    8.6. [Multiple State Updates](#-multiple-state-updates)  
+    8.7. [Example: Counter with Increment, Decrement, and Reset](#-example-counter-with-increment-decrement-and-reset)  
+    8.8. [Example: Show/Hide with useState](#-example-showhide-with-usestate)  
+    8.9. [Q&A: State and useState Hook](#-qa-state-and-usestate-hook)  
+
+
 ---
 
 ## 📅 Day 1: Getting Started with React
@@ -514,5 +530,158 @@ Use `className` instead of `class`, and `htmlFor` instead of `for`.
 
 > **Summary:**  
 > JSX makes React development intuitive by blending HTML and JavaScript. Follow the rules for valid JSX, use fragments to avoid unnecessary DOM nodes, and leverage expressions for dynamic content.
+
+---
+
+## 📅 Day 9: State & useState Hook in React
+
+### 🧠 What is State in React?
+
+**State** is a special built-in object in React that allows components to store and manage dynamic data. When state changes, React automatically re-renders the component to reflect the new data.
+
+- State is **local** to a component.
+- State makes components **interactive** and **dynamic**.
+- In **class-based components**, state is managed with `this.state` and updated using `this.setState()`.
+- In **function-based components**, state is managed using the `useState` **Hook**.
+
+---
+
+### ⚡ What are Hooks?
+
+**Hooks** are special functions introduced in React 16.8 that let you "hook into" React features (like state and lifecycle methods) in function components.
+
+- The most commonly used hook is `useState`.
+- Hooks can only be used in **function components** (not in classes).
+- All hooks start with the word `use` (e.g., `useState`, `useEffect`).
+
+---
+
+### 🏗️ useState Hook: Introduction
+
+`useState` is a Hook that lets you add state to function components.
+
+**Syntax:**
+```js
+const [state, setState] = useState(initialValue);
+```
+- `state`: The current state value.
+- `setState`: Function to update the state.
+- `initialValue`: The initial value of the state.
+
+---
+
+### 📝 Example: Basic useState Usage
+
+```jsx
+import { useState } from "react";
+
+function Counter() {
+    const [count, setCount] = useState(0);
+
+    return (
+        <div>
+            <h1>{count}</h1>
+            <button onClick={() => setCount(count + 1)}>Add</button>
+        </div>
+    );
+}
+```
+- Clicking the button updates the state and re-renders the component.
+
+---
+
+### ⚠️ Common Mistake: Not Using useState
+
+If you use a normal variable instead of state, React will **not** re-render the component when the value changes.
+
+```jsx
+function WrongCounter() {
+    let count = 0;
+    return (
+        <>
+            <h1>{count}</h1>
+            <button onClick={() => { count = count + 1; }}>Add</button>
+        </>
+    );
+}
+```
+- Here, the displayed count will **not** update because React doesn't know the value has changed.
+
+---
+
+### 🛠️ Multiple State Updates
+
+You can have multiple state variables in a single component:
+
+```jsx
+const [count, setCount] = useState(0);
+const [isVisible, setIsVisible] = useState(true);
+```
+
+---
+
+### 🧩 Example: Counter with Increment, Decrement, and Reset
+
+```jsx
+import { Fragment, useState } from "react";
+
+function Counter() {
+    const [count, setCount] = useState(0);
+
+    return (
+        <Fragment>
+            <h1>{count}</h1>
+            <button onClick={() => setCount(count + 1)}>➕</button>
+            <button onClick={() => setCount(count - 1)}>➖</button>
+            <button onClick={() => setCount(0)}>Reset</button>
+        </Fragment>
+    );
+}
+```
+
+---
+
+### 👁️ Example: Show/Hide with useState
+
+```jsx
+import { useState } from "react";
+
+function ShowHide() {
+    const [visible, setVisible] = useState(false);
+
+    return (
+        <div>
+            <button onClick={() => setVisible(!visible)}>
+                {visible ? "Hide" : "Show"}
+            </button>
+            {visible && <p>This is a toggleable paragraph!</p>}
+        </div>
+    );
+}
+```
+
+---
+
+### ❓ Q&A: State and useState Hook
+
+**Q1. What is state in React?**  
+State is a built-in object that stores dynamic data in a component and triggers re-rendering when updated.
+
+**Q2. What is the useState hook?**  
+`useState` is a React Hook that allows function components to have state variables.
+
+**Q3. Why can't we use normal variables for dynamic data in React?**  
+Normal variables do not trigger re-renders. Only state changes (via `useState` or `setState`) cause React to update the UI.
+
+**Q4. Can we have multiple useState hooks in one component?**  
+Yes, you can use as many `useState` hooks as needed for different pieces of state.
+
+**Q5. What happens if you update state directly (e.g., `count = count + 1`)?**  
+Direct updates to state variables won't re-render the component. Always use the setter function (`setCount`).
+
+---
+
+> **Summary:**  
+> Use the `useState` hook to manage dynamic data in function components. Always update state using the setter function to ensure React re-renders your component.
 
 ---

@@ -5,6 +5,7 @@ import MainBody from "./Component/MainBody";
 import Footer from "./Component/Footer";
 import Count from "./Day7/Count";
 import JSXIntro from "./Day8/JSXIntro/JSXIntro";
+import Day9 from './Day9/Day9';
 
 
 
@@ -51,7 +52,7 @@ import JSXIntro from "./Day8/JSXIntro/JSXIntro";
 //   }
 //   render(){
 //     return(
-//      <Count/>
+//      <JSXIntro/>
 //     )
 //   }
 // }
@@ -69,9 +70,15 @@ class App extends Component{
   render(){
     return(
       //Day 8
+      // <div>
+      //  <JSXIntro/>
+      // </div>
+      
+      //Day 9
       <div>
-       <JSXIntro/>
+         <Day9 />
       </div>
+     
       
   )
   }
