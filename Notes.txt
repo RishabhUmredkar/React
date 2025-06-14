@@ -281,3 +281,14 @@ Day 9
 
 State
 Hooks : It is just inbuild function which come with react.
+
+
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------
+
+Day 10
+
+Task 5 : Dark mode and light mode
+Task 6 : Like and Unlike.

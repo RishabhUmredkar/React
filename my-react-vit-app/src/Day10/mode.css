@@ -1,0 +1,22 @@
+#mainBodyDarkLight{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;;
+}
+
+button{
+    padding: 10px 40px;
+    font-size: 20px;
+    border: none;
+    border-radius: 20px;
+}
+
+.dark{
+    background: #333;
+    color: #aaa;
+}
+.light{
+    background: #aaa;
+    color: #333;
+}

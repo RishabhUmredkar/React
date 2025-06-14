@@ -6,6 +6,7 @@ import Footer from "./Component/Footer";
 import Count from "./Day7/Count";
 import JSXIntro from "./Day8/JSXIntro/JSXIntro";
 import Day9 from './Day9/Day9';
+import Day10 from "./Day10/Day10";
 
 
 
@@ -75,10 +76,15 @@ class App extends Component{
       // </div>
       
       //Day 9
-      <div>
-         <Day9 />
-      </div>
+      // <div>
+      //    <Day9 />
+      // </div>
      
+
+      // Day 10
+      <div>
+        <Day10/>
+      </div>
       
   )
   }

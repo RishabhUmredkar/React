@@ -620,6 +620,7 @@ JSXIntro/
 ### 📜 JSX Rules & Best Practices
 
 1. **Single Root Element:**  
+    You can return only one jsx element at a time which can have n no of nested element.
     Each component must return only one JSX element. You can nest multiple elements inside a single parent.
 
     ```jsx
@@ -633,11 +634,15 @@ JSXIntro/
     ```
 
 2. **Element Naming:**
+    JSX element always writtern in lowercase (UpperCase consider as Component)
+
     JSX element always writtern in lowercase (UpperCase consider as Component)  
     - HTML elements: lowercase (`div`, `span`)
     - React components: Uppercase (`MyComponent`)
 
-3. **Valid Nesting:** 
+3. **Valid Nesting:**
+    You dont have to pass wrong descendents to any element. eg.  div is not allowed inside p tag.
+
     Do not place invalid elements inside others (e.g., `<div>` inside `<p>` is not allowed).
 
 4. **Self-Closing Tags:**  
@@ -653,7 +658,6 @@ JSXIntro/
     - `for` → `htmlFor`
 
 6. **JSX Expressions:**  
-    Use `{}` to embed JavaScript expressions.
  We can use jsx expression `{}` for writing JS code inside jsx.
               1. we can write only ternary opertor as an conditional statement.
               2. we can write only the HOF(Looping statement) that can return anything eg. map/filter/Reduce etc. 
@@ -669,7 +673,9 @@ JSXIntro/
       ```
       Avoid `forEach` as it does not return a value.
 
-7. **React Fragments:**  
+7. **React Fragments:** 
+    We can use react fragment to avoid extra nodes in jsx.
+
     Use `<React.Fragment>` or shorthand `<>...</>` to group elements without adding extra nodes to the DOM.
 
     ```jsx
@@ -877,3 +883,4 @@ Direct updates to state variables won't re-render the component. Always use the 
 > Use the `useState` hook to manage dynamic data in function components. Always update state using the setter function to ensure React re-renders your component.
 
 ---
+ 
