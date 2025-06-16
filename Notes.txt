@@ -292,3 +292,14 @@ Day 10
 
 Task 5 : Dark mode and light mode
 Task 6 : Like and Unlike.
+
+
+
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------
+
+Day 11
+
+Once we change in state then it will re render the Component
