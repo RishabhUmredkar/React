@@ -303,3 +303,14 @@ Task 6 : Like and Unlike.
 Day 11
 
 Once we change in state then it will re render the Component
+
+
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------
+
+Day 12
+
+to install Tailwaind css : 1.  npm install -D tailwindcss@3 postcss autoprefixer
+                           2.  npx tailwindcss init -p

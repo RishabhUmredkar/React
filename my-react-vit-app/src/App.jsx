@@ -8,6 +8,7 @@ import JSXIntro from "./Day8/JSXIntro/JSXIntro";
 import Day9 from './Day9/Day9';
 import Day10 from "./Day10/Day10";
 import Day11 from "./Day11/Day11";
+import Day12 from "./Day12/Day12";
 
 
 
@@ -87,9 +88,15 @@ class App extends Component{
       //   <Day10/>
       // </div>
       
-      // Day 10
+      // // Day 11
+      // <div>
+      //   <Day11/>
+      // </div>
+
+      
+      // Day 12
       <div>
-        <Day11/>
+        <Day12/>
       </div>
       
   )
