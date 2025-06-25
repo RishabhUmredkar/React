@@ -9,6 +9,10 @@ import Day9 from './Day9/Day9';
 import Day10 from "./Day10/Day10";
 import Day11 from "./Day11/Day11";
 import Day12 from "./Day12/Day12";
+import VSCodeClone from './Day12/VSCodeClone/VSCodeClone';
+import Day15 from './Day15/Day15';
+import Day16 from './Day16/Day16';
+import Day17 from './Day17/Day17';
 
 
 
@@ -95,10 +99,35 @@ class App extends Component{
 
       
       // Day 12
-      <div>
-        <Day12/>
-      </div>
+      // <div>
+      //   <Day12/>
+      // </div>
+
+      // <div>
+      //   <VSCodeClone/>
+      // </div>
+
+
+
+      // Day 15
+      // <div>
+      //   <Day15/>
+      // </div>
+
       
+      
+      // // Day 16
+      // <div>
+      //   <Day16/>
+      // </div>
+
+
+
+      // Day 17
+      <div>
+        <Day17/>
+      </div>
+
   )
   }
 }

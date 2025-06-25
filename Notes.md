@@ -68,6 +68,38 @@
     9.8. [Example: Show/Hide with useState](#-example-showhide-with-usestate)  
     9.9. [Q&A: State and useState Hook](#-qa-state-and-usestate-hook)  
 
+
+### Day 10: Dark/Light Mode & Like/Unlike  
+10. [Dark Mode/Light Mode & Like/Unlike Functionality](#-day-10-dark-modelight-mode--likeunlike-functionality)  
+    10.1. [Dark Mode and Light Mode in React](#-task-5-dark-mode-and-light-mode-in-react)  
+    10.2. [Q&A: Dark/Light Mode](#-qa-darklight-mode)  
+    10.3. [Like and Unlike Functionality](#-task-6-like-and-unlike-functionality)  
+    10.4. [Q&A: Like/Unlike](#-qa-likeunlike)  
+
+### Day 11: State and Re-rendering  
+11. [React State and Re-rendering](#-day-11-react-state-and-re-rendering)  
+    11.1. [How State Triggers Re-rendering in React](#-how-state-triggers-re-rendering-in-react)  
+    11.2. [Q&A: State and Re-rendering](#-qa-state-and-re-rendering)  
+
+### Day 12: Tailwind CSS  
+12. [Installing and Understanding Tailwind CSS](#-day-12-installing-and-understanding-tailwind-css)  
+    12.1. [What is Tailwind CSS?](#-what-is-tailwind-css)  
+    12.2. [How to Install Tailwind CSS in a React Project](#-how-to-install-tailwind-css-in-a-react-project)  
+    12.3. [Q&A: Tailwind CSS](#-qa-tailwind-css)  
+
+### Day 13: Vite, Babel, npm vs npx, and HMR  
+13. [Vite, Babel, npm vs npx, and Hot Module Replacement](#-day-13-vite-babel-npm-vs-npx-and-hot-module-replacement)  
+    13.1. [Why is Vite Faster than CRA?](#-why-is-vite-faster-than-create-react-app-cra)  
+    13.2. [Babel: The JavaScript Transpiler](#-babel-the-javascript-transpiler)  
+    13.3. [npm vs npx](#-npm-vs-npx)  
+    13.4. [Hot Module Replacement (HMR)](#-hot-module-replacement-hmr) 
+
+### Day 15: Understanding Props in React  
+14. [Understanding Props in React](#-day-15-understanding-props-in-react)  
+    14.1. [What are Props?](#-what-are-props)  
+    14.2. [Difference Between State and Props](#-difference-between-state-and-props)  
+    14.3. [Q&A: Props and State](#-qa-props-and-state)   
+
 ---
 
 ## 📅 Day 1: Getting Started with React
@@ -267,6 +299,9 @@ Implementing the changes in Real DOM, that found during the Diffing Algorithm Vi
 ### ❓ Q5. What is React Fiber?
 
 **React Fiber** is the core engine of React responsible for handling its internal processes, such as the diffing algorithm, reconciliation, and rendering updates. It enables React to efficiently manage complex UI updates, prioritize tasks, and deliver smoother user experiences by breaking rendering work into smaller units.
+
+  React fiber is the react engine that handle all the internal working with the react like diffing Algorithm, Reconciliation and lot many things.
+
 
 ---
 
@@ -884,3 +919,440 @@ Direct updates to state variables won't re-render the component. Always use the 
 
 ---
  
+
+ 
+## 📅 Day 10: Dark Mode/Light Mode & Like/Unlike Functionality
+
+### 🌗 Task 5: Dark Mode and Light Mode in React
+
+**Dark mode** and **light mode** are popular UI features that allow users to switch between two color themes for better accessibility and user experience.
+
+#### **How to Implement Dark/Light Mode in React:**
+
+1. **State Management:**  
+    Use the `useState` hook to track the current theme (dark or light).
+
+2. **Toggle Function:**  
+    Create a function to switch between modes.
+
+3. **Conditional Styling:**  
+    Apply different CSS classes or inline styles based on the theme state.
+
+**Example:**
+
+```jsx
+import { useState } from "react";
+
+function ThemeSwitcher() {
+  const [darkMode, setDarkMode] = useState(false);
+
+  const toggleTheme = () => setDarkMode(!darkMode);
+
+  return (
+     <div className={darkMode ? "dark-theme" : "light-theme"}>
+        <button onClick={toggleTheme}>
+          Switch to {darkMode ? "Light" : "Dark"} Mode
+        </button>
+        <h1>{darkMode ? "Dark Mode" : "Light Mode"} is Active</h1>
+     </div>
+  );
+}
+```
+
+- Use CSS to define `.dark-theme` and `.light-theme` styles.
+
+#### **Q&A: Dark/Light Mode**
+
+**Q1. Why use dark mode in web apps?**  
+Dark mode reduces eye strain, saves battery on OLED screens, and provides a modern look.
+
+**Q2. How do you manage theme state in React?**  
+By using the `useState` hook to store the current theme and toggling it with a function.
+
+**Q3. How can you persist the user's theme preference?**  
+Store the theme in `localStorage` and read it on component mount.
+
+---
+
+### 👍 Task 6: Like and Unlike Functionality
+
+**Like/Unlike** is a common interactive feature in apps (e.g., social media) that lets users express approval.
+
+#### **How to Implement Like/Unlike in React:**
+
+1. **State Management:**  
+    Use `useState` to track whether the item is liked.
+
+2. **Toggle Function:**  
+    Switch the liked state on button click.
+
+3. **Conditional Rendering:**  
+    Show different icons or text based on the liked state.
+
+**Example:**
+
+```jsx
+import { useState } from "react";
+
+function LikeButton() {
+  const [liked, setLiked] = useState(false);
+
+  return (
+     <button onClick={() => setLiked(!liked)}>
+        {liked ? "Unlike" : "Like"}
+     </button>
+  );
+}
+```
+
+- You can use icons (e.g., ❤️/🤍) for better UX.
+
+#### **Q&A: Like/Unlike**
+
+**Q1. How do you track if an item is liked?**  
+By storing a boolean state (e.g., `liked`) in the component.
+
+**Q2. How do you update the UI when the like state changes?**  
+React automatically re-renders the component when state changes, updating the button text or icon.
+
+**Q3. How can you store the like status for multiple items?**  
+Use an array or object in state to track the like status for each item (e.g., by ID).
+
+---
+
+> **Summary:**  
+> Use React state and event handlers to implement dark/light mode and like/unlike features. These patterns are common in modern UIs and help make your apps interactive and user-friendly.
+
+
+---
+
+
+## 📅 Day 11: React State and Re-rendering
+
+### 🔄 How State Triggers Re-rendering in React
+
+In React, **state** is used to store dynamic data in a component. When you update the state using the setter function (like `setState` or `useState`), React **automatically re-renders** the component to reflect the new state in the UI.
+
+#### **How It Works:**
+1. **Initial Render:**  
+    - The component renders with its initial state.
+2. **State Update:**  
+    - When you call the state setter (e.g., `setCount(newValue)`), React schedules a re-render.
+3. **Re-render:**  
+    - The component function runs again, using the updated state value.
+    - The UI updates to show the latest data.
+
+#### **Example:**
+
+```jsx
+import { useState } from "react";
+
+function Counter() {
+  const [count, setCount] = useState(0);
+
+  return (
+     <div>
+        <h1>{count}</h1>
+        <button onClick={() => setCount(count + 1)}>Add</button>
+     </div>
+  );
+}
+```
+- Clicking the button updates the state (`count`), causing React to re-render the component and display the new value.
+
+---
+
+### ❓ Q&A: State and Re-rendering
+
+**Q1. What happens when you update state in React?**  
+React schedules a re-render of the component, updating the UI to match the new state.
+
+**Q2. Why doesn't changing a normal variable trigger a re-render?**  
+React only tracks changes to state variables. Updating a normal variable does not notify React, so the UI does not update.
+
+**Q3. Can you have multiple state updates in one component?**  
+Yes, you can use multiple `useState` hooks for different pieces of state. Each update triggers a re-render.
+
+**Q4. Does updating state always re-render the entire app?**  
+No, only the component where the state changed (and its children) will re-render.
+
+**Q5. What is the difference between props and state regarding re-rendering?**  
+- **State:** Local to a component; updating it re-renders that component.
+- **Props:** Passed from parent to child; if props change, the child re-renders.
+
+---
+
+> **Summary:**  
+> In React, updating state triggers a re-render of the component, ensuring the UI always reflects the latest data. Use state for dynamic, interactive UIs, and always update it using the provided setter functions.
+
+---
+
+
+
+---
+
+## 📅 Day 12: Installing and Understanding Tailwind CSS
+
+### 🎨 What is Tailwind CSS?
+
+**Tailwind CSS** is a utility-first CSS framework for rapidly building custom user interfaces. Instead of writing custom CSS, you compose your designs using utility classes directly in your HTML or JSX.
+
+**Key Features:**
+- Utility-first: Use small, single-purpose classes to style elements.
+- Highly customizable via configuration.
+- No need to write custom CSS for most designs.
+- Encourages consistency and speeds up development.
+
+---
+
+### ⚙️ How to Install Tailwind CSS in a React Project
+
+**Step 1: Install Tailwind and Dependencies**
+
+```bash
+npm install -D tailwindcss@3 postcss autoprefixer
+```
+- `tailwindcss@3`: The Tailwind CSS framework.
+- `postcss`: A tool for transforming CSS with plugins.
+- `autoprefixer`: Adds vendor prefixes for better browser support.
+
+**Step 2: Initialize Tailwind Configuration**
+
+```bash
+npx tailwindcss init -p
+```
+- This creates two files:
+    - `tailwind.config.js`: Tailwind configuration.
+    - `postcss.config.js`: PostCSS configuration.
+
+**Step 3: Configure Tailwind to Remove Unused Styles in Production**
+
+In `tailwind.config.js`, set the `content` array to include your source files:
+```js
+module.exports = {
+  content: [
+    "./src/**/*.{js,jsx,ts,tsx}",
+    "./public/index.html"
+  ],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+}
+```
+
+**Step 4: Add Tailwind Directives to Your CSS**
+
+In your main CSS file (e.g., `src/index.css` or `src/App.css`), add:
+```css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+```
+
+**Step 5: Start Your Project**
+
+```bash
+npm run dev
+```
+or
+```bash
+npm start
+```
+Now you can use Tailwind utility classes in your React components!
+
+---
+
+### ❓ Q&A: Tailwind CSS
+
+**Q1. What is Tailwind CSS and why use it?**  
+Tailwind CSS is a utility-first CSS framework that lets you style elements using pre-defined classes, making development faster and more consistent.
+
+**Q2. What does `npm install -D tailwindcss@3 postcss autoprefixer` do?**  
+It installs Tailwind CSS and its dependencies as development dependencies.
+
+**Q3. Why do we run `npx tailwindcss init -p`?**  
+It generates the configuration files needed for Tailwind and PostCSS.
+
+**Q4. Where do you add Tailwind's CSS directives?**  
+In your main CSS file (e.g., `index.css`), add `@tailwind base;`, `@tailwind components;`, and `@tailwind utilities;`.
+
+**Q5. How does Tailwind help with responsive design?**  
+Tailwind provides responsive utility classes (like `md:p-4`, `lg:text-xl`) to easily apply styles at different breakpoints.
+
+---
+
+> **Summary:**  
+> Tailwind CSS streamlines styling by using utility classes. Install it with npm, initialize configuration, add directives to your CSS, and start using utility classes in your React components for fast, consistent UI development.
+
+
+
+---
+## 📅 Day 13: Vite, Babel, npm vs npx, and Hot Module Replacement
+
+### ⚡ Why is Vite Faster than Create React App (CRA)?
+
+Vite and CRA are both tools for bootstrapping React projects, but Vite is significantly faster, especially during development.
+
+#### **How They Work:**
+
+- **CRA Workflow:**  
+    1. You make changes in your code.
+    2. CRA **bundles** the entire project (using Webpack).
+    3. Outputs the bundled files.
+    4. Reloads the app for every change.
+
+- **Vite Workflow:**  
+    1. You make changes in your code.
+    2. Vite **serves files instantly** using native ES modules.
+    3. Only bundles files for production.
+    4. Uses Hot Module Replacement (HMR) for instant updates.
+
+#### **Key Points:**
+- Vite leverages the browser's native ES module support for lightning-fast startup and updates.
+- Only changed modules are reloaded, not the whole app.
+- CRA re-bundles the entire app on every change, making it slower.
+
+#### **Q&A:**
+- **Q: Why is Vite faster than CRA?**  
+    **A:** Vite serves source files over native ES modules and only bundles for production, while CRA bundles everything up front, causing slower reloads.
+
+---
+
+### 🔄 Babel: The JavaScript Transpiler
+
+**Babel** is a tool that converts modern JavaScript (including JSX) into code that browsers can understand.
+
+#### **Why Use Babel?**
+- Browsers may not support the latest JavaScript features or JSX syntax.
+- Babel transpiles (converts) this code into older, compatible JavaScript.
+
+#### **Example:**
+```jsx
+const Day13 = () => {
+    return (
+        <div>
+            hello  
+        </div>
+    );
+};
+```
+Babel converts the JSX above into `React.createElement` calls, so browsers can run it.
+
+#### **Q&A:**
+- **Q: What is Babel?**  
+    **A:** A transpiler that converts modern JavaScript and JSX into browser-compatible JavaScript.
+
+---
+
+### 📦 npm vs npx
+
+| Tool | Full Form | Purpose | Usage Example |
+|------|-----------|---------|--------------|
+| **npm** | Node Package Manager | Installs and manages packages (adds to `node_modules`) | `npm install eslint` |
+| **npx** | Node Package eXecute | Runs packages and binaries without installing them globally | `npx create-react-app my-app` |
+
+#### **Key Differences:**
+- **npm** is for installing and managing dependencies.
+- **npx** is for running CLI tools or packages directly, often without installing them.
+
+#### **Q&A:**
+- **Q: When should I use npm vs npx?**  
+    **A:** Use `npm` to install packages you'll use in your project. Use `npx` to run one-off commands or tools without installing them.
+
+---
+
+### ♻️ Hot Module Replacement (HMR)
+
+**Hot Module Replacement** allows you to update modules (JavaScript, CSS, etc.) in a running app without a full page reload.
+
+#### **Benefits:**
+- Faster development: See changes instantly.
+- Preserves app state between updates.
+- Only the changed module reloads, not the whole app.
+
+#### **Q&A:**
+- **Q: What is HMR?**  
+    **A:** A feature that updates changed modules in real time without refreshing the entire page.
+
+---
+
+> **Summary:**  
+> Vite is faster than CRA due to its instant serving and HMR. Babel ensures your code runs everywhere. Use `npm` to install, `npx` to run. HMR boosts productivity by updating only what's changed.
+
+---
+
+
+## 📅 Day 15: Understanding Props in React
+
+### 📦 What are Props?
+
+**Props** (short for "properties") are a special object in React used to pass data **from a parent component to a child component**.
+
+- Props are **read-only**: the child component cannot modify them.
+- They make components **dynamic** and **reusable** by allowing different data to be passed in.
+- Props can be **any data type**: string, number, array, object, function, etc.
+- Props are passed as **attributes** to components in JSX.
+
+**Example:**
+
+```jsx
+// ParentComponent.jsx
+<ChildComponent name="John" age={25} />
+```
+
+```jsx
+// ChildComponent.jsx
+function ChildComponent(props) {
+    return (
+        <div>
+            <p>Name: {props.name}</p>
+            <p>Age: {props.age}</p>
+        </div>
+    );
+}
+```
+
+- Here, `name` and `age` are props passed from the parent to the child.
+
+---
+
+### 🔄 Difference Between State and Props
+
+| Feature         | **Props**                                              | **State**                                         |
+|-----------------|-------------------------------------------------------|---------------------------------------------------|
+| Definition      | Data passed from parent to child component             | Data managed within the component itself           |
+| Mutability      | **Read-only** (cannot be changed by child)             | **Mutable** (can be updated using setState/useState) |
+| Usage           | Makes components reusable and dynamic                  | Manages dynamic, local data within a component     |
+| Who sets it?    | Set by **parent** component                            | Set and updated by the **component itself**        |
+| Access          | Accessed via `props` object                            | Accessed via `this.state` (class) or `useState` (function) |
+| Lifecycle       | Remains constant unless parent changes it              | Can change over time (triggers re-render)          |
+
+---
+
+### ❓ Q&A: Props and State
+
+**Q1. What are props in React?**  
+Props are read-only objects used to pass data from a parent component to a child component.
+
+**Q2. Can a child component modify its props?**  
+No, props are immutable in the child component.
+
+**Q3. How do you pass data from parent to child?**  
+By adding attributes to the child component in JSX:  
+`<ChildComponent name="Alice" />`
+
+**Q4. What is the main difference between state and props?**  
+- **Props**: Passed from parent, read-only, used for configuration.
+- **State**: Managed within the component, can be changed, used for dynamic data.
+
+**Q5. Can you pass functions as props?**  
+Yes! Functions can be passed as props to allow child components to communicate with parents (e.g., for event handling).
+
+---
+
+> **Summary:**  
+> Use **props** to pass data and functions from parent to child components, making your components flexible and reusable. 
+Use **state** to manage local, dynamic data within a component.
+
+---

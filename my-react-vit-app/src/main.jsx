@@ -5,6 +5,8 @@ import App from './App.jsx'
 import Day7 from './App.jsx'
 import Count from './Day7/Count.jsx'
 import Day8 from './App.jsx'
+import './index.css'; // This file contains the tailwind directives
+
 
 createRoot(document.getElementById('root')).render(
     <App/>

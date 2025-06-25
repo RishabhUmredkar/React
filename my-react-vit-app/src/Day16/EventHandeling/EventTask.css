@@ -1,0 +1,12 @@
+main{
+    height: 5vh;
+    width: 100%;
+    border: 1px solid;
+    background: rgb(0, 0, 0);
+    display: flex;
+}
+section{
+    height: 5vh;
+    border: 1px solid rgb(255, 255, 255);
+    width: 2%;
+}
