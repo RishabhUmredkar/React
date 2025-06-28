@@ -13,6 +13,8 @@ import VSCodeClone from './Day12/VSCodeClone/VSCodeClone';
 import Day15 from './Day15/Day15';
 import Day16 from './Day16/Day16';
 import Day17 from './Day17/Day17';
+import Day18 from './Day18/Day18';
+import Day19 from './Day19/Day19';
 
 
 
@@ -124,9 +126,20 @@ class App extends Component{
 
 
       // Day 17
+      // <div>
+      //   <Day17/>
+      // </div>
+
+
+         // Day 18
       <div>
-        <Day17/>
+        <Day18/>
       </div>
+
+      // <div>
+      //   <Day19/>
+      // </div>
+
 
   )
   }

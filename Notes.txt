@@ -412,3 +412,42 @@ Props Children
  It is special react prop that allows components to receive and render the element place between their opening and closing tag.
  
 synthetic event is n object which will give the entire informtion bout the current event. nd current element(trget).
+
+
+
+
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------
+
+Day 19
+
+Hooks : Use Ref 
+The useRef hook is a react hook that provide a way to store a mutable value that doesnot trigger re-renders
+ when it change.
+it is also coommonly used to access DOM element directly.
+
+It return a ref object with .current property that can hold Dom reference and mutable value that 
+change across renders.
+
+
+Uncontrolled Component
+    useRef hook converts controlled component to Uncontrolled componentbecause it make changes in real DOm 
+    instead in Virtual DOm
+
+summery
+
+aspect                     | useref in Uncontrolled 
+Usage                      |..........
+props                      |............
+cons                       |...............
+best case use              |.................
+
+Using which we can target the elements
+DisAdvantages of useRef Hook : It directly makes changes in real DOM instead Virtual DOM 
+(It is also known as Uncontrolled component).
+
+
+
+ContextApi
