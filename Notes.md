@@ -577,7 +577,7 @@ A **Module** is a single JS or JSX file in React.
 | Syntax                         | Uses `function` or arrow function                                                            | Uses `class` and extends `Component`                             |
 | Render Method                  | Returns JSX directly                                                                         | Must define a `render()` method                                  |
 | State Management               | Uses Hooks (`useState`, `useReducer`, etc.)                                                  | Uses `this.state` and `this.setState()`                          |
-| Lifecycle Methods              | Uses Hooks (`useEffect`) to mimic lifecycle methods                                          | Has built-in lifecycle methods (`componentDidMount`, etc.)        |
+| Lifecycle Methods              | Uses Hooks (`useEffect`) to mimic lifecycle methods                                          | Has built-in lifecycle methods (`componentDidMount`, `componentWillUnmount`, `ComponentDidUpdate`,etc.)        |
 | Hooks Support                  | Yes                                                                                          | No                                                               |
 | Code Maintenance               | Easier to maintain, less boilerplate                                                         | More boilerplate, harder to maintain                             |
 

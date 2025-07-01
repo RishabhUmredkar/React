@@ -15,6 +15,7 @@ import Day16 from './Day16/Day16';
 import Day17 from './Day17/Day17';
 import Day18 from './Day18/Day18';
 import Day19 from './Day19/Day19';
+import Day20 from "./Day20/Day20";
 
 
 
@@ -132,13 +133,20 @@ class App extends Component{
 
 
          // Day 18
-      <div>
-        <Day18/>
-      </div>
+      // <div>
+      //   <Day18/>
+      // </div>
 
       // <div>
       //   <Day19/>
       // </div>
+
+
+      <div>
+        <Day20/>
+      </div>
+
+
 
 
   )
