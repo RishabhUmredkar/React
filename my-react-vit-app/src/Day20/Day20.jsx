@@ -10,3 +10,4 @@ const Day20 = () => {
 }
 
 export default Day20
+

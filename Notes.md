@@ -121,6 +121,18 @@
     17.4. [Disadvantages of useRef/Uncontrolled Components](#-disadvantages-of-userefuncontrolled-components)  
     17.5. [Q&A: useRef & Uncontrolled Components](#-qa-useref--uncontrolled-components)  
 
+### Day 20: Context API  
+18. [Context API in React](#-day-20-context-api-in-react)  
+    18.1. [What is the Context API?](#-what-is-the-context-api)  
+    18.2. [How Does Context API Work?](#-how-does-context-api-work)  
+    18.3. [Example: Using Context API](#-example-using-context-api)  
+    18.4. [Q&A: Context API](#-qa-context-api)  
+
+### Day 21: React Lifecycle Methods & useEffect  
+19. [React Lifecycle Methods & useEffect Hook](#-day-21-react-lifecycle-methods--useeffect-hook)  
+    19.1. [React Lifecycle Methods (Class Components)](#-react-lifecycle-methods-class-components)  
+    19.2. [useEffect Hook (Function Components)](#-useeffect-hook-function-components)  
+    19.3. [Q&A: Lifecycle Methods & useEffect](#-qa-lifecycle-methods--useeffect)  
 
 ---
 
@@ -1529,10 +1541,7 @@ Use `event.target` inside your event handler.
 > **Summary:**  
 > Use `props.children` to make components flexible and reusable by allowing them to render nested content. Synthetic events provide a reliable, cross-browser way to handle user interactions in React.
 
----------------------------------------------------------------------------------------------------------------------------------
-
-
----------------------------------------------------------------------------------------------------------------------------------
+---
 
 ## 📅 Day 18: CRUD Operations in React
 
@@ -1739,3 +1748,249 @@ Yes, but it's most useful for DOM references or values that don't affect renderi
 > Use `useRef` for direct DOM access or storing mutable values that don't need to trigger re-renders. Prefer controlled components for complex forms and dynamic UIs, but use uncontrolled components for simple cases or when direct DOM access is needed.
 
 ---
+
+
+
+## 📅 Day 20: Context API in React
+
+### 🌐 What is the Context API?
+
+The **Context API** is a feature in React that allows you to share data (state, functions, etc.) across the entire component tree **without** having to pass props manually at every level (prop drilling). It's useful for global data like themes, user authentication, language settings, etc.
+
+---
+
+### 🏗️ How Does Context API Work?
+
+1. **Create a Context:**  
+    Use `createContext()` to create a context object.
+
+    ```js
+    import { createContext } from "react";
+    export const MyContext = createContext();
+    ```
+
+2. **Provide the Context:**  
+    Wrap your component tree with the context's `Provider` and pass the value you want to share.
+
+    ```js
+    <MyContext.Provider value={/* shared data */}>
+      <App />
+    </MyContext.Provider>
+    ```
+
+3. **Consume the Context:**  
+    Use the `useContext()` hook inside any child component to access the shared data.
+
+    ```js
+    import { useContext } from "react";
+    import { MyContext } from "./path/to/context";
+
+    const MyComponent = () => {
+      const value = useContext(MyContext);
+      // use value.a, value.b, etc.
+    };
+    ```
+
+---
+
+### 📝 Example: Using Context API
+
+**Context Setup:**
+
+```js
+// StoreContext.jsx
+import React, { createContext } from "react";
+
+export const helper = createContext();
+
+const StoreContext = ({ children }) => {
+  let a = 10;
+  let b = 20;
+  let c = [];
+  let d = {};
+
+  return (
+     <helper.Provider value={{ a, b, c, d }}>
+        {children}
+     </helper.Provider>
+  );
+};
+
+export default StoreContext;
+```
+
+**Providing Context in Root:**
+
+```js
+// main.jsx
+import { createRoot } from "react-dom/client";
+import StoreContext from "./StoreContext";
+import App from "./App";
+
+createRoot(document.getElementById("root")).render(
+  <StoreContext>
+     <App />
+  </StoreContext>
+);
+```
+
+**Consuming Context in a Component:**
+
+```js
+// App.jsx
+import { useContext } from "react";
+import { helper } from "./StoreContext";
+
+const App = () => {
+  let data = useContext(helper);
+  console.log(data); // { a: 10, b: 20, c: [], d: {} }
+  return <div>App</div>;
+};
+
+export default App;
+```
+
+---
+
+### ❓ Q&A: Context API
+
+**Q1. What problem does the Context API solve?**  
+It eliminates the need for prop drilling by allowing you to share data across many components without passing props manually at every level.
+
+**Q2. When should you use Context API?**  
+When you have global data (like user info, theme, language, etc.) that needs to be accessed by many components at different nesting levels.
+
+**Q3. What are the main parts of Context API?**  
+- `createContext()` to create a context.
+- `Provider` to supply the data.
+- `useContext()` to consume the data.
+
+**Q4. Can you have multiple contexts in one app?**  
+Yes, you can create and use as many contexts as needed for different types of global data.
+
+**Q5. Does using Context API trigger re-renders?**  
+Yes, when the value passed to the `Provider` changes, all consuming components will re-render.
+
+---
+
+> **Summary:**  
+> The Context API is a powerful tool for managing global data in React apps. Use it to avoid prop drilling and make your code cleaner and more maintainable.
+
+---
+## 📅 Day 21: React Lifecycle Methods & useEffect Hook
+
+### 🔄 React Lifecycle Methods (Class Components)
+
+React class components have special methods called **lifecycle methods** that let you run code at specific points in a component’s life. These are grouped into three phases:
+
+#### 1. **Mounting** (Component is being created and inserted into the DOM)
+- **constructor()**: Runs once when the component is created. Best place to initialize variables and bind methods. Must call `super()`.
+- **getDerivedStateFromProps()**: Runs after the constructor and before `render()`. Can update state based on props.
+- **render()**: Mandatory method. Returns JSX to display UI. Runs every time the component renders.
+- **componentDidMount()**: Runs once after the component is rendered. Good for async tasks (API calls, subscriptions).
+This method execute the last because first all the content should be render on the UI using render method then this method can perform the time consuming task as its own.
+
+
+#### 2. **Updating** (Component is being re-rendered due to changes in props or state)
+- **getDerivedStateFromProps()**: Runs after the constructor and before `render()`. Can update state based on props.
+- **shouldComponentUpdate()**: Decides whether the component should update. If returns `false`, update is skipped.
+- **render()**: Mandatory method. Returns JSX to display UI. Runs every time the component renders.
+- **getSnapshotBeforeUpdate()**: this method keep the record of previous state if required we can use it also.
+
+- **componentDidUpdate()**: This methods is just similar to ComponentDidMount only the Difference is this method repeatedlly on each state update.
+Each method in updating phase can revoke or call repeatedlly on state update.
+
+
+#### 3. **Unmounting** (Component is being removed from the DOM)
+- **componentWillUnmount()**: This method stop the unnecessary executation / background activity when we are leaving the component.
+This method execute only once throughout the life cycle.
+
+
+
+---
+
+### 🪝 useEffect Hook (Function Components)
+
+The **useEffect** hook is used to achieve the life cycle method using the function based component Using this hook we can achieve three life cycle method 
+
+
+**Syntax:**
+```js
+useEffect(() => {
+    // side effect code
+    return () => {
+        // cleanup code (optional)
+    };
+}, [dependencies]);
+```
+- The callback runs after render.
+- The dependency array controls when the effect runs.
+- Whenever any single depedency changes the call back function will get call or executed.
+
+#### **How useEffect Maps to Lifecycle Methods:**
+
+- **componentDidMount**:  
+    ```js
+    useEffect(() => {
+        // Runs once after initial render
+    }, []);
+    ```
+    - If you are not passing any depedency then it similar to the ComponentDidMount means the current call back function can not be revoke back in any of the phase.
+    - We can use this method to call the API's and get the data initially. 
+
+- **componentDidUpdate**:  
+    ```js
+    useEffect(() => {
+        // Runs when dependencies change
+    }, [dep1, dep2]);
+    ```
+    List state/props in the array; effect runs when any change.
+    - Now the current call back function can be call based on the depedencies. In above Example we used three depedencies. 
+    - If any of the depedencies changes then call back function will get call. 
+    - Mostly the depedencies will be state only.
+
+
+- **componentWillUnmount**:  
+    ```js
+    useEffect(() => {
+        const timer = setInterval(() => {
+            console.log("tik tik");
+        }, 1000);
+        return () => {
+            clearInterval(timer);
+            console.log("last page leaved");
+        };
+    }, []);
+    ```
+- To achieve ComponentWillUnmount we must return the function which will clear the unnecessary background.
+
+
+---
+
+### ❓ Q&A: Lifecycle Methods & useEffect
+
+**Q1. What are the three phases of a React component’s lifecycle?**  
+Mounting, Updating, and Unmounting.
+
+**Q2. Which lifecycle method is best for API calls in class components?**  
+`componentDidMount()`.
+
+**Q3. How do you mimic `componentDidMount` in a function component?**  
+Use `useEffect(() => { ... }, [])`.
+
+**Q4. How do you clean up resources (like timers) in function components?**  
+Return a cleanup function from `useEffect`.
+
+**Q5. What does the dependency array in `useEffect` do?**  
+It controls when the effect runs:  
+- `[]`: only once (mount)  
+- `[dep]`: runs when `dep` changes
+
+**Q6. What happens if you omit the dependency array in `useEffect`?**  
+The effect runs after every render.
+
+---
+
+> **Summary:**  
+> React lifecycle methods let you run code at specific points in a component’s life. In function components, use the `useEffect` hook to handle side effects, updates, and cleanup, making your code more predictable and maintainable.
+

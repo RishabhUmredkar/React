@@ -1,4 +1,4 @@
-import { Component } from "react";
+import { Component, useContext } from "react";
 import Navbar from "./Component/Navbar";
 import Aside from "./Component/Aside";
 import MainBody from "./Component/MainBody";
@@ -16,6 +16,8 @@ import Day17 from './Day17/Day17';
 import Day18 from './Day18/Day18';
 import Day19 from './Day19/Day19';
 import Day20 from "./Day20/Day20";
+import Day21 from './Day21/Day21';
+import { helper } from "./Day20/StoreContext";
 
 
 
@@ -44,7 +46,7 @@ import Day20 from "./Day20/Day20";
 // class Day7 extends Component{
 //   constructor(){
 //     super();
-    
+
 //   }
 //   render(){
 //     return(
@@ -58,7 +60,7 @@ import Day20 from "./Day20/Day20";
 // class Day8 extends Component{
 //   constructor(){
 //     super();
-    
+
 //   }
 //   render(){
 //     return(
@@ -70,86 +72,110 @@ import Day20 from "./Day20/Day20";
 // export default Day8;
 
 
+import React from 'react'
 
+import { GiDervishSwords } from "react-icons/gi";
 
-class App extends Component{
-  constructor()
-  {
+class App extends Component {
+  constructor() {
     super();
   }
-  render(){
-    return(
-      //Day 8
-      // <div>
-      //  <JSXIntro/>
-      // </div>
-      
-      //Day 9
-      // <div>
-      //    <Day9 />
-      // </div>
-     
+  render() {
+    return (
+//       //Day 8
+// <div>
+//  <JSXIntro/>
+// </div>
 
-      // Day 10
-      // <div>
-      //   <Day10/>
-      // </div>
-      
-      // // Day 11
-      // <div>
-      //   <Day11/>
-      // </div>
-
-      
-      // Day 12
-      // <div>
-      //   <Day12/>
-      // </div>
-
-      // <div>
-      //   <VSCodeClone/>
-      // </div>
+//Day 9
+// <div>
+//    <Day9 />
+// </div>
 
 
+// Day 10
+// <div>
+//   <Day10/>
+// </div>
 
-      // Day 15
-      // <div>
-      //   <Day15/>
-      // </div>
+// // Day 11
+// <div>
+//   <Day11/>
+// </div>
 
-      
-      
-      // // Day 16
-      // <div>
-      //   <Day16/>
-      // </div>
+
+// Day 12
+// <div>
+//   <Day12/>
+// </div>
+
+// <div>
+//   <VSCodeClone/>
+// </div>
 
 
 
-      // Day 17
-      // <div>
-      //   <Day17/>
-      // </div>
-
-
-         // Day 18
-      // <div>
-      //   <Day18/>
-      // </div>
-
-      // <div>
-      //   <Day19/>
-      // </div>
-
-
-      <div>
-        <Day20/>
-      </div>
+// Day 15
+// <div>
+//   <Day15/>
+// </div>
 
 
 
+// // Day 16
+// <div>
+//   <Day16/>
+// </div>
 
-  )
+
+
+// Day 17
+// <div>
+//   <Day17/>
+// </div>
+
+
+// Day 18
+// <div>
+//   <Day18/>
+// </div>
+
+// Day 19
+// <div>
+//   <Day19/>
+// </div>
+
+
+
+// // Day20
+// <div>
+//   <Day20 />
+// </div>
+
+// const App = () => {
+//   let data = useContext(helper)
+//   console.log(data);
+//   return (
+//     <div>
+//       App
+//     </div>
+//   )
+// }
+
+// export default App
+
+
+
+//Day21
+<div>
+  <Day21 />
+</div>
+
+
+
+
+
+    )
   }
 }
 export default App;

@@ -450,4 +450,98 @@ DisAdvantages of useRef Hook : It directly makes changes in real DOM instead Vir
 
 
 
+
+
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------
+
+Day 20
+
 ContextApi
+
+
+
+
+
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------
+
+Day 21
+
+Life cycle method is available in three different phase.
+1. Mounting. 
+2. Updating.
+3. Unmounting.
+
+1. Mounting : it start when the page loads for the first time.
+                There are some in mounting phase i.e
+                1. constructor() : It loads only once it become the best place to initialize the variable and binding this keyword
+                It is an optional method in which you must use super call statement.
+
+                2. getDerivedStateFromProps() : this method is exectute again and again. During mounting phase it get invoke after constructor nd before the render method.
+                In that method we can update the state on the basis of props as well.
+
+                3. render() : This method get invoke again and again. This is the mendatory method. it is responsible to display the content on the UI.
+
+                4. ComponentDidMount() : This method execute only once at the end of Mounting phase. Usually we perform the asynchronous task and network relation operation (get, post, put, patch) in this method.
+                This method execute the last because first all the content should be render on the UI using render method then this method can perform the time consuming task as its own.
+
+
+2. Updating : This phase is start when user start taking any action or interaction. 
+                1. getDerivedStateFromProps() : this method is exectute again and again. During mounting phase it get invoke after constructor nd before the render method.
+                In that method we can update the state on the basis of props as well.
+
+                2. shouldComponentUpdate() : This method will check weather the component should be updated or not. 
+                                            If this method return true then only remaining methods in updating phase will be executed.
+                                            If this method return false then only remaining methods in updating phase will not be executed.
+                                            And it will be decided on the basis on changes.
+
+                3. render() : This method get invoke again and again. This is the mendatory method. it is responsible to display the content on the UI.
+
+                4. getSnapShotBeforeUpdate() : this method keep the record of previous state if required we can use it also.
+
+                5. ComponentDidUpdate() : This methods is just similar to ComponentDidMount only the Difference is this method repeatedlly on each state update.
+                Each method in updating phase can revoke or call repeatedlly on state update.
+
+
+Unmounting : This phase occurs when we are about to leave the component (leaving the current page).
+              This phase has only one method 
+              1. ComponentWillUnmount() : this method stop the unnecessary executation / background activity when we are leaving the component.
+               this method execute only once throughout the life cycle.
+
+
+----
+
+UseEffect Hook : This hook is used to achieve the life cycle method using the function based component
+                  Using this hook we can achieve three life cycle method 
+                  Sytax of useEffectUse is : UseEffect(()=>{},[])
+                  call back function , depedency array (we can pass n no. of depedencies in depedency array).
+
+                  Whenever any single depedency changes the call back function will get call or executed.
+
+                  Q. How to achieve ComponentDidMount() using UseEffect ? 
+                  -> syntax : UseEffect(()=>{},[])
+                  -> If you are not passing any depedency then it similar to the ComponentDidMount means the current call back function can not be revoke back in any of the phase.
+                  We can use this method to call the API's and get the data initially. 
+
+                  Q. How to achieve ComponentDidUpdate using useEffect ?
+                  -> syntax : UseEffect(()=>{},[depedency1, depedency2,..])
+                  -> now the current call back function can be call based on the depedencies. In above Example we used three depedencies. If any of the depedencies changes then call back function will get call. 
+                  Mostly the depedencies will be state only.
+
+                  Q. How to achieve ComponentWillUnmount using useEffect ?
+                  -> syntax : UseEffect(()=>{
+                    let timer = setInterval(()=>{
+                      console.log("tik tik");
+                    },1000)
+                    return()=>{
+                      clearInterval(timer)
+                      console.log("last page leaved");
+                    }
+                  },[])
+                  -> To achieve ComponentWillUnmount we must return the function which will clear the unnecessary background.
+
