@@ -134,6 +134,23 @@
     19.2. [useEffect Hook (Function Components)](#-useeffect-hook-function-components)  
     19.3. [Q&A: Lifecycle Methods & useEffect](#-qa-lifecycle-methods--useeffect)  
 
+
+### Day 22: useEffect, useMemo, Memoization, Axios, and Custom Hooks  
+20. [useEffect, useMemo, Memoization, Axios, and Custom Hooks](#-day-22-useeffect-usememo-memoization-axios-and-custom-hooks)  
+    20.1. [useEffect: Understanding Side Effects](#-useeffect-understanding-side-effects)  
+    20.2. [useMemo: Optimizing Expensive Calculations](#-usememo-optimizing-expensive-calculations)  
+    20.3. [Memoization in React](#-memoization-in-react)  
+    20.4. [Axios: Making HTTP Requests](#-axios-making-http-requests)  
+    20.5. [Custom Hooks](#-custom-hooks)  
+
+
+### Day 23: React Router (Routing in React)  
+21. [React Router (Routing in React)](#-day-23-react-router-routing-in-react)  
+    21.1. [What is Routing in React?](#-what-is-routing-in-react)  
+    21.2. [Key Concepts of React Router](#-key-concepts-of-react-router)  
+    21.3. [Example: Setting Up Routing](#-example-setting-up-routing)  
+    21.4. [How Routing Works](#-how-routing-works)  
+    21.5. [Q&A: React Router](#-qa-react-router)  
 ---
 
 ## 📅 Day 1: Getting Started with React
@@ -1993,4 +2010,285 @@ The effect runs after every render.
 
 > **Summary:**  
 > React lifecycle methods let you run code at specific points in a component’s life. In function components, use the `useEffect` hook to handle side effects, updates, and cleanup, making your code more predictable and maintainable.
+
+
+
+---
+## 📅 Day 22: useEffect, useMemo, Memoization, Axios, and Custom Hooks
+
+### 🪝 useEffect: Understanding Side Effects
+
+- **useEffect** is a React Hook for handling side effects in function components, such as data fetching, subscriptions, or manually changing the DOM.
+- **Syntax:**
+    ```js
+    useEffect(() => {
+      // Side effect code here
+      return () => {
+        // Cleanup code (optional)
+      };
+    }, [dependencies]);
+    ```
+- **Key Points:**
+    - Runs after every render by default.
+    - The dependency array controls when the effect runs.
+    - Cleanup function runs before the effect re-runs or when the component unmounts.
+
+#### Q&A: useEffect
+- **Q: What is useEffect used for?**  
+  A: To perform side effects like fetching data, setting up subscriptions, or timers in React components.
+- **Q: How do you avoid infinite loops in useEffect?**  
+  A: By specifying dependencies in the dependency array, so the effect only runs when those values change.
+- **Q: How do you clean up resources in useEffect?**  
+  A: Return a cleanup function from the effect.
+
+---
+
+### 🧠 useMemo: Optimizing Expensive Calculations
+
+- **useMemo** memoizes the result of a function, recalculating only when dependencies change.
+- Useful for optimizing performance when you have expensive calculations that shouldn't run on every render.
+
+**Syntax:**
+```js
+const memoizedValue = useMemo(() => computeExpensiveValue(a, b), [a, b]);
+```
+
+**Example:**
+```js
+const filteredItems = useMemo(() => {
+  return items.filter(item => item.active);
+}, [items]);
+```
+
+#### Q&A: useMemo
+- **Q: When should you use useMemo?**  
+  A: When you have expensive calculations that depend on certain values and you want to avoid recalculating them unnecessarily.
+- **Q: What if you omit the dependency array?**  
+  A: The function runs on every render, so no memoization happens.
+- **Q: Does useMemo cache functions?**  
+  A: No, it caches the result of the function.
+
+---
+
+### ⚡ Memoization in React
+
+- **Memoization** is a technique to cache the result of expensive function calls.
+- In React, useMemo and React.memo help avoid unnecessary recalculations and re-renders.
+
+**React.memo:**  
+- Wraps a component to prevent re-rendering unless its props change.
+    ```js
+    const MyComponent = React.memo(function MyComponent(props) {
+      // ...
+    });
+    ```
+
+#### Q&A: Memoization
+- **Q: What is memoization?**  
+  A: Caching the result of a function so it doesn't need to be recalculated with the same inputs.
+- **Q: How does React.memo differ from useMemo?**  
+  A: React.memo is for components; useMemo is for values inside components.
+
+---
+
+### 🌐 Axios: Making HTTP Requests
+
+- **Axios** is a promise-based HTTP client for making API requests in React.
+- It has a simpler syntax and better error handling than the native fetch API.
+
+**Install:**
+```bash
+npm install axios
+```
+
+**Example:**
+```js
+import axios from "axios";
+import { useEffect, useState } from "react";
+
+function DataFetcher() {
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    axios.get("https://api.example.com/items")
+      .then(response => setData(response.data))
+      .catch(error => console.error(error));
+  }, []);
+
+  return <div>{JSON.stringify(data)}</div>;
+}
+```
+
+#### Q&A: Axios
+- **Q: Why use Axios over fetch?**  
+  A: Axios has a simpler API, automatic JSON parsing, better error handling, and supports request/response interceptors.
+- **Q: How do you handle errors in Axios?**  
+  A: Use `.catch()` or try/catch with async/await.
+
+---
+
+### 🛠️ Custom Hooks
+
+- **Custom Hooks** let you extract and reuse logic across multiple components.
+- A custom hook is a function that starts with `use` and can use other hooks.
+
+**Example:**
+```js
+import { useState, useEffect } from "react";
+
+function useFetch(url) {
+  const [data, setData] = useState(null);
+  useEffect(() => {
+    fetch(url)
+      .then(res => res.json())
+      .then(setData);
+  }, [url]);
+  return data;
+}
+
+// Usage
+const data = useFetch("https://api.example.com/items");
+```
+
+#### Q&A: Custom Hooks
+- **Q: What is a custom hook?**  
+  A: A reusable function that uses React hooks to encapsulate logic.
+- **Q: Why use custom hooks?**  
+  A: To avoid code duplication and keep components clean.
+- **Q: Can custom hooks use other hooks?**  
+  A: Yes, they can use any built-in or custom hooks.
+
+---
+
+> **Summary:**  
+> - useEffect handles side effects and cleanup.
+> - useMemo and memoization optimize performance by caching results.
+> - Axios simplifies HTTP requests.
+> - Custom hooks promote code reuse and cleaner components.
+
+---
+
+
+## 📅 Day 23: React Router (Routing in React)
+
+### 🚦 What is Routing in React?
+
+**Routing** in React allows you to create single-page applications (SPAs) with multiple views or pages, enabling navigation without full page reloads. React Router is the most popular library for handling routing in React apps.
+
+---
+
+### 🛣️ Key Concepts of React Router
+
+- **Router:** The top-level component that enables routing (e.g., `BrowserRouter`, `RouterProvider`).
+- **Routes:** Define the mapping between URL paths and React components.
+- **Link:** Used for navigation between routes without reloading the page.
+- **Outlet:** Placeholder for rendering child routes inside parent components.
+- **Nested Routes:** Allows you to render child components within parent routes.
+
+---
+
+### 🏗️ Example: Setting Up Routing
+
+#### 1. **Defining Routes**
+
+```js
+import { createBrowserRouter } from 'react-router-dom';
+import Login from './../Pages/Login';
+import Home from './../Pages/Home';
+import About from './../Pages/About';
+import Contact from './../Pages/Contact';
+import Services from './../Pages/Services';
+import Admin from './../Pages/Admin';
+
+export let routes = createBrowserRouter([
+    {
+        path: '/',
+        element: <Login />
+    },
+    {
+        path: 'home',
+        element: <Home />,
+        children: [
+            { path: '/home/about', element: <About /> },
+            { path: '/home/contact', element: <Contact /> },
+            { path: '/home/services', element: <Services /> }
+        ]
+    },
+    {
+        path: 'admin',
+        element: <Admin />
+    }
+]);
+```
+
+#### 2. **Providing the Router**
+
+```js
+import { RouterProvider } from 'react-router-dom';
+import { routes } from '../Layout/AppRoutes';
+
+const RoutesIntro = () => (
+    <div>
+        <RouterProvider router={routes} />
+    </div>
+);
+
+export default RoutesIntro;
+```
+
+#### 3. **Navigation with Link and Outlet**
+
+```js
+import { Link, Outlet } from 'react-router-dom';
+
+const Home = () => (
+    <div>
+        <nav>
+            <Link to="/">Login</Link>
+            <Link to="/home/about">About</Link>
+            <Link to="/home/contact">Contact</Link>
+            <Link to="/home/services">Services</Link>
+            <Link to="/admin">Admin</Link>
+        </nav>
+        <Outlet />
+    </div>
+);
+
+export default Home;
+```
+
+---
+
+### 🔄 How Routing Works
+
+- The `RouterProvider` uses the route configuration to render the correct component based on the URL.
+- `Link` components update the URL and render the corresponding component without a full page reload.
+- `Outlet` renders child routes inside the parent component (e.g., About, Contact, Services inside Home).
+
+---
+
+### ❓ Q&A: React Router
+
+**Q1. What is React Router?**  
+A library for handling navigation and routing in React single-page applications.
+
+**Q2. What is the difference between `Link` and `<a>`?**  
+`Link` updates the URL and renders components without reloading the page, while `<a>` reloads the page.
+
+**Q3. What is an Outlet in React Router?**  
+A placeholder component that renders the matched child route inside a parent route.
+
+**Q4. How do you define nested routes?**  
+By adding a `children` array to a route, with each child specifying its own `path` and `element`.
+
+**Q5. Why use React Router instead of multiple HTML files?**  
+React Router enables SPA behavior, providing faster navigation and a better user experience without full page reloads.
+
+---
+
+> **Summary:**  
+> React Router enables seamless navigation in React apps by mapping URLs to components, supporting nested routes, and providing navigation tools like `Link` and `Outlet`. Use it to build multi-page experiences in a single-page app.
+
+---
+
 

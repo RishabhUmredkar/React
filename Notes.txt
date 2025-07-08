@@ -545,3 +545,20 @@ UseEffect Hook : This hook is used to achieve the life cycle method using the fu
                   },[])
                   -> To achieve ComponentWillUnmount we must return the function which will clear the unnecessary background.
 
+
+
+
+
+
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------
+
+Day 22
+
+useEffect
+useMemo
+momoization
+axios
+customHook

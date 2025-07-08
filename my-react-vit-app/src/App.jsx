@@ -75,6 +75,8 @@ import { helper } from "./Day20/StoreContext";
 import React from 'react'
 
 import { GiDervishSwords } from "react-icons/gi";
+import Day22 from './Day22/Day22';
+import RoutesIntro from "./Router/Rounting/RoutesIntro";
 
 class App extends Component {
   constructor() {
@@ -167,10 +169,15 @@ class App extends Component {
 
 
 //Day21
-<div>
-  <Day21 />
-</div>
+// {/* <div>
+//   <Day21 />
+// </div> */}
 
+
+<div>
+  {/* <Day22/> */}
+  <RoutesIntro/>
+</div>
 
 
 
