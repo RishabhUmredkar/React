@@ -1695,6 +1695,7 @@ function InputFocus() {
 
 ### 🕹️ Uncontrolled Components
 
+- useRef hook converts **controlled component** to **Uncontrolled component** because it make changes in Real DOM instead in Virtual DOM
 - An **uncontrolled component** is a component where form data is handled by the DOM itself, not by React state.
 - Using `useRef`, you can **read values directly from the DOM** instead of syncing them with React state.
 - This is the opposite of a **controlled component**, where form data is managed by React state.
@@ -2292,3 +2293,4 @@ React Router enables SPA behavior, providing faster navigation and a better user
 ---
 
 
+dd

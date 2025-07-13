@@ -5,6 +5,7 @@ import About from './../Pages/About';
 import Contact from './../Pages/Contact';
 import Services from './../Pages/Services';
 import Admin from './../Pages/Admin';
+import HomeMain from './../Pages/HomeMain';
 
 export let routes = createBrowserRouter([
     {
@@ -15,6 +16,10 @@ export let routes = createBrowserRouter([
         path : 'home',
         element : <Home/>,
         children :[
+            {
+                path : '/home',
+                element : <HomeMain/>
+            },
             {
                 path : '/home/about',
                 element : <About/>
