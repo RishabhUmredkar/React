@@ -151,6 +151,17 @@
     21.3. [Example: Setting Up Routing](#-example-setting-up-routing)  
     21.4. [How Routing Works](#-how-routing-works)  
     21.5. [Q&A: React Router](#-qa-react-router)  
+
+### Day 24: useReducer Hook in React  
+22. [useReducer Hook in React](#-day-23-usereducer-hook-in-react)  
+    22.1. [What is the useReducer Hook?](#-what-is-the-usereducer-hook)  
+    22.2. [How Does useReducer Work?](#-how-does-usereducer-work)  
+    22.3. [Example: Counter with useReducer](#-example-counter-with-usereducer)  
+    22.4. [When to Use useReducer?](#-when-to-use-usereducer)  
+    22.5. [Q&A: useReducer Hook](#-qa-usereducer-hook)  
+
+
+
 ---
 
 ## 📅 Day 1: Getting Started with React
@@ -2290,7 +2301,102 @@ React Router enables SPA behavior, providing faster navigation and a better user
 > **Summary:**  
 > React Router enables seamless navigation in React apps by mapping URLs to components, supporting nested routes, and providing navigation tools like `Link` and `Outlet`. Use it to build multi-page experiences in a single-page app.
 
+
 ---
 
+## 📅 Day 24: useReducer Hook in React
 
-dd
+### 🪝 What is the `useReducer` Hook?
+
+- `useReducer` is a React Hook used for managing **complex state logic** in function components.
+- It is an alternative to `useState`, especially useful when state depends on previous values or when you have multiple related state updates.
+- It works similarly to reducers in Redux: you dispatch actions, and a reducer function determines how state changes.
+
+---
+
+### 🏗️ How Does `useReducer` Work?
+
+- **Reducer Function:**  
+    A function that takes the current state and an action, and returns the new state.
+- **Dispatch Function:**  
+    Used to send actions to the reducer.
+- **Initial State:**  
+    The starting value for your state.
+
+**Syntax:**
+```js
+const [state, dispatch] = useReducer(reducer, initialState);
+```
+
+---
+
+### 📝 Example: Counter with `useReducer`
+
+```jsx
+import React, { useReducer } from 'react';
+
+const reducer = (state, action) => {
+        switch (action.type) {
+                case 'inc':
+                        return state + action.payload;
+                case 'dec':
+                        return state - action.payload;
+                case 'res':
+                        return 0;
+                default:
+                        return state;
+        }
+};
+
+const UseReducerTask1 = () => {
+        const [state, dispatch] = useReducer(reducer, 0);
+
+        return (
+                <div>
+                        <h1>{state}</h1>
+                        <button onClick={() => dispatch({ type: 'inc', payload: 100 })}>Inc + 100</button><br /><br />
+                        <button onClick={() => dispatch({ type: 'inc', payload: 150 })}>Inc + 150</button><br /><br />
+                        <button onClick={() => dispatch({ type: 'dec', payload: 150 })}>Dec - 150</button><br /><br />
+                        <button onClick={() => dispatch({ type: 'res' })}>Reset</button>
+                </div>
+        );
+};
+
+export default UseReducerTask1;
+```
+
+---
+
+### 🔍 When to Use `useReducer`?
+
+- When you have **complex state logic** (e.g., multiple sub-values or dependent state).
+- When the **next state depends on the previous state**.
+- When you want to **organize state updates** in a single place (the reducer function).
+- When you want to make your code more **predictable and testable**.
+
+---
+
+### ❓ Q&A: useReducer Hook
+
+**Q1. What is the difference between `useState` and `useReducer`?**  
+- `useState` is simpler and best for independent state variables.
+- `useReducer` is better for complex state logic or when state updates depend on previous state.
+
+**Q2. What arguments does the reducer function receive?**  
+The current state and an action object.
+
+**Q3. How do you trigger a state update with `useReducer`?**  
+Call the `dispatch` function with an action object (e.g., `{ type: 'inc', payload: 100 }`).
+
+**Q4. What is an action in `useReducer`?**  
+An object that describes what change to make (usually has a `type` and optional `payload`).
+
+**Q5. Can you use `useReducer` for async actions?**  
+`useReducer` itself is synchronous, but you can combine it with `useEffect` for async logic.
+
+---
+
+> **Summary:**  
+> Use `useReducer` for managing complex state logic in React function components. It helps organize state updates, especially when actions are more descriptive or when state transitions are complex.
+
+---

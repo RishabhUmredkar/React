@@ -77,6 +77,8 @@ import React from 'react'
 import { GiDervishSwords } from "react-icons/gi";
 import Day22 from './Day22/Day22';
 import RoutesIntro from "./Router/Rounting/RoutesIntro";
+import Crud from './CRUD/Crud';
+import Day23 from "./Day23/Day23";
 
 class App extends Component {
   constructor() {
@@ -174,14 +176,20 @@ class App extends Component {
 // </div> */}
 
 
+// <div>
+//   {/* <Day22/> */}
+//   <RoutesIntro/>
+// </div>
+
+
+
+// <div>
+//   <Crud/>
+// </div>
+
 <div>
-  {/* <Day22/> */}
-  <RoutesIntro/>
+  <Day23/>
 </div>
-
-
-
-
     )
   }
 }
