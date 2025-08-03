@@ -79,7 +79,11 @@ import Day22 from './Day22/Day22';
 import RoutesIntro from "./Router/Rounting/RoutesIntro";
 import Crud from './CRUD/Crud';
 import Day23 from "./Day23/Day23";
-
+import Day24 from "./Day24/Day24";
+import Routes from "./Router2/Routes";
+import Day26 from './Day26/Day26';
+import Day27 from './Day27/Day27';
+import HomeWork from './HomeWork/Homework';
 class App extends Component {
   constructor() {
     super();
@@ -187,10 +191,36 @@ class App extends Component {
 //   <Crud/>
 // </div>
 
+// <div>
+//   <Day23/>
+// </div>
+
+
+// {/* <div>
+//   <Day24/>
+// </div> */}
+
+
+
+// {/* <div>
+//   <Routes/>
+// </div> */}
+
+
+// {/* <div>
+//   <Day26/>
+// </div>
+//  */}
+
+
+// <div>
+//   <Day27/>
+// </div>
+
 <div>
-  <Day23/>
+  <HomeWork/>
 </div>
-    )
+)
   }
 }
 export default App;

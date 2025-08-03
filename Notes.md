@@ -293,8 +293,9 @@ func(); // Output: Function
 ---
 ## 📅 Day 3: React Concepts & Q&A
 
-### ❓ Q1. What are the Advantages and Disadvantages of React?
+**React dom is a library which is used to convert real DOM into  virtual DOM**
 
+### ❓ Q1. What are the Advantages and Disadvantages of React?
 **Advantages:**
 1. **Fast & Smooth Apps:** React uses a Virtual DOM, which updates only the parts of the UI that change. This makes apps highly responsive and efficient.
 2. **Component Reusability:** You can build small, reusable components and combine them to create complex UIs, reducing code duplication.
@@ -341,6 +342,7 @@ func(); // Output: Function
     - Supports only TypeScript
 
 ---
+
 
 ### ❓ Q3. What is the Diffing Algorithm?
 
