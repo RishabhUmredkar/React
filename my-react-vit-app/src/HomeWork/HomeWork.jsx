@@ -16,7 +16,7 @@ const HomeWork = () => {
       <h1>Homework</h1>
       {/* <ComponentsAndProps /> */}
       {/* <Run /> */}
-      {/* <RunEventHandling /> */}
+      <RunEventHandling />
       {/* <UseEffect/> */}
 
       {/* <ConditionalRendering /> */}
@@ -26,7 +26,7 @@ const HomeWork = () => {
       {/* <CustomHook/> */}
       {/* <Router /> */}
 
-      <StateManagement/>
+      {/* <StateManagement/> */}
     </div>
   )
 }

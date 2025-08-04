@@ -32,7 +32,7 @@ const RunEventHandling = () => {
             {/* <AlertButton /> */}
 
             {/* // 12.	Console Log Form Data on Submit */}
-            {/* <FormDataLogger /> */}
+            <FormDataLogger />
 
             {/* // 13.	Live Text Preview */}
             {/* <TextInputPreview /> */}
